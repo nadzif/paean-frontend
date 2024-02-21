@@ -1,0 +1,262 @@
+{
+	"id": 3,
+	"slug": "science",
+	"sections": [
+		{
+			"name": "hero",
+			"sequence": 1,
+			"properties": [
+				{
+					"id": 76,
+					"key": "title",
+					"value": {
+						"en": "Science",
+						"kr": ""
+					}
+				},
+				{
+					"id": 77,
+					"key": "background-image",
+					"value": {
+						"en": "1692461906650.png"
+					}
+				}
+			],
+			"items": []
+		},
+		{
+			"name": "contents",
+			"sequence": 2,
+			"properties": [],
+			"items": [
+				{
+					"id": 72,
+					"sequence": 1,
+					"properties": [
+						{
+							"id": 78,
+							"key": "title",
+							"value": {
+								"en": "Why Mitochondria-based Therapy?",
+								"kr": ""
+							}
+						},
+						{
+							"id": 79,
+							"key": "descriptions",
+							"value": {
+								"en": "<p>Mitochondria are present in every human cell. They not only generate energy but also play an important role in cell proliferation, signaling, etc. Mitochondria have unique characteristics that can be delivered into cells through endocytosis.</p>\r\n<p>Mitochondria are susceptible to damage by both internal (aging) and external factors (pollutants). Once they are damaged, cell function will deteriorate, and diseases may occur. With PAEAN's mitochondria-based therapeutics, we transform mitochondria into powerful biopharmaceutical agents to address critical medical needs.</p>",
+								"kr": ""
+							}
+						},
+						{
+							"id": 80,
+							"key": "background-image",
+							"value": {
+								"en": "1692459878413.png",
+								"kr": ""
+							}
+						},
+						{
+							"id": 81,
+							"key": "background-color",
+							"value": {
+								"en": "#000000",
+								"kr": ""
+							}
+						},
+						{
+							"id": 82,
+							"key": "position",
+							"value": {
+								"en": "middle",
+								"kr": ""
+							}
+						}
+					]
+				},
+				{
+					"id": 73,
+					"sequence": 1,
+					"properties": [
+						{
+							"id": 83,
+							"key": "title",
+							"value": {
+								"en": "Our Approach",
+								"kr": ""
+							}
+						},
+						{
+							"id": 84,
+							"key": "descriptions",
+							"value": {
+								"en": "<p>Applying the unique characteristics of mitochondria and proprietary technology platform, PAEAN is developing a first-in-class mitochondria-based pharmaceutical product that has a large potential to treat various rare diseases and cancer.</p>",
+								"kr": ""
+							}
+						},
+						{
+							"id": 85,
+							"key": "background-image",
+							"value": {
+								"en": "",
+								"kr": ""
+							}
+						},
+						{
+							"id": 86,
+							"key": "background-color",
+							"value": {
+								"en": "#232323",
+								"kr": ""
+							}
+						},
+						{
+							"id": 87,
+							"key": "position",
+							"value": {
+								"en": "middle",
+								"kr": ""
+							}
+						}
+					]
+				},
+				{
+					"id": 74,
+					"sequence": 1,
+					"properties": [
+						{
+							"id": 88,
+							"key": "title",
+							"value": {
+								"en": "MitoTherapy Products",
+								"kr": ""
+							}
+						},
+						{
+							"id": 89,
+							"key": "descriptions",
+							"value": {
+								"en": "<p>MitoTherapy Products are novel medicinal products using mitochondria isolated from human stem cells or human blood. Mitochondria are unique organelles that are responsible for energy production in cells. Based on our experimental results, mitochondria have a high potential to treat inflammatory diseases.</p>",
+								"kr": ""
+							}
+						},
+						{
+							"id": 90,
+							"key": "background-image",
+							"value": {
+								"en": "1692461178520.png"
+							}
+						},
+						{
+							"id": 91,
+							"key": "background-color",
+							"value": {
+								"en": "#000000",
+								"kr": ""
+							}
+						},
+						{
+							"id": 92,
+							"key": "position",
+							"value": {
+								"en": "left",
+								"kr": ""
+							}
+						}
+					]
+				},
+				{
+					"id": 75,
+					"sequence": 1,
+					"properties": [
+						{
+							"id": 93,
+							"key": "title",
+							"value": {
+								"en": "Mitochondrial Cell Therapy Products",
+								"kr": ""
+							}
+						},
+						{
+							"id": 94,
+							"key": "descriptions",
+							"value": {
+								"en": "<p>Based on&nbsp;in vitro&nbsp;and&nbsp;in vivo&nbsp;studies, isolated mitochondria-enriched PBMC or NK cells can easily penetrate cells and enhance their cytotoxicity against tumor cells.</p>",
+								"kr": ""
+							}
+						},
+						{
+							"id": 95,
+							"key": "background-image",
+							"value": {
+								"en": "1692461225747.png"
+							}
+						},
+						{
+							"id": 96,
+							"key": "background-color",
+							"value": {
+								"en": "#000000",
+								"kr": ""
+							}
+						},
+						{
+							"id": 97,
+							"key": "position",
+							"value": {
+								"en": "right",
+								"kr": ""
+							}
+						}
+					]
+				},
+				{
+					"id": 76,
+					"sequence": 1,
+					"properties": [
+						{
+							"id": 98,
+							"key": "title",
+							"value": {
+								"en": "Mitoceutical Products (Modified MitoTherapy)",
+								"kr": ""
+							}
+						},
+						{
+							"id": 99,
+							"key": "descriptions",
+							"value": {
+								"en": "<p>Mitochondria can be modified by applying PAEAN's proprietary platform technology to create a novel mitochondria complex to treat cancer. The modified mitochondria complex consists of a scFv (single-chain fragment of antibody) against cancer surface markers, with the protein and/or chemical payloads on the surface of mitochondria. This approach allows various \"drug substances\" to be delivered straight into cells by targeting the specific cells based on the type of scFv. This platform technology is comparable to the Antibody Drug Conjugated (ADC) technology.</p>",
+								"kr": ""
+							}
+						},
+						{
+							"id": 100,
+							"key": "background-image",
+							"value": {
+								"en": "1692461287762.png"
+							}
+						},
+						{
+							"id": 101,
+							"key": "background-color",
+							"value": {
+								"en": "#000000",
+								"kr": ""
+							}
+						},
+						{
+							"id": 102,
+							"key": "position",
+							"value": {
+								"en": "left",
+								"kr": ""
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

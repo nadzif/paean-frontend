@@ -1,0 +1,25 @@
+.buttonSizeNav {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: Montserrat, sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.62px;
+}
+
+.imgLogoNav {
+    width: 193px;
+    aspect-ratio: auto 193 / 80;
+    height: 80px;
+}
+.navbar {
+    transition: all 0.5s;
+}
+
+.navBarBgTransparent {
+    background-color: transparent;
+}
+
+.navBarBgWhite {
+    background-color: white;
+}

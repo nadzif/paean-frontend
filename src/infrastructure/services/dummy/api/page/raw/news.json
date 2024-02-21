@@ -1,0 +1,36 @@
+{
+	"id": 4,
+	"slug": "news",
+	"sections": [
+		{
+			"name": "hero",
+			"sequence": 1,
+			"properties": [
+				{
+					"id": 104,
+					"key": "title",
+					"value": {
+						"en": "News",
+						"kr": ""
+					}
+				},
+				{
+					"id": 105,
+					"key": "subtitle",
+					"value": {
+						"en": "",
+						"kr": ""
+					}
+				},
+				{
+					"id": 106,
+					"key": "background-image",
+					"value": {
+						"en": "1692466328067.jpg"
+					}
+				}
+			],
+			"items": []
+		}
+	]
+}

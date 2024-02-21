@@ -1,0 +1,36 @@
+.cta{
+	background: url("https://placehold.it/1592x639") fixed 50% 50%;
+	background-size: cover;
+	padding: 120px 0px;
+	@extend .overly;
+}
+.cta-block{
+	background: url("https://placehold.it/1592x639") no-repeat;
+	background-size: cover;
+	@extend .overly-2;
+}
+
+.contact-home {
+	background-color: #494949;
+
+	.cta-block-2 {
+		padding: 80px 15px;
+	}
+
+	.cta-item {
+		font-family: $primary-font;
+		font-size: 20px;
+		font-weight: bold;
+		color: $light;
+		padding: 40px 15px;
+
+		i {
+			font-size: 30px;
+			border: 2px solid $light;
+			border-radius: 50%;
+			padding: 20px;
+			vertical-align: middle;
+			margin-right: 24px;
+		}
+	}
+}

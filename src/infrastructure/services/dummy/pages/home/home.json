@@ -1,0 +1,391 @@
+{
+    "slug": "home",
+    "title": "Innovative Biopharmaceutical Company",
+    "subtitle": "Based On Mitochondria",
+    "description": "",
+    "sections": [
+        {
+            "sequence": 1,
+            "name": "card",
+            "properties": [
+                {
+                    "type": "text",
+                    "key": "title",
+                    "value": "Who We Are"
+                },
+                {
+                    "type": "text",
+                    "key": "body",
+                    "value": "PAEAN Biotechnology, a pioneer in mitochondria-based therapeutics, is the first company to develop mitochondria as biopharmaceutical agents to treat diseases. Using our first-in-class proprietary technology of isolating, storing, and modifying mitochondria, we developed a revolutionary treatment to address rare diseases and cancer."
+                },
+                {
+                    "type": "style",
+                    "key": "background-color",
+                    "value": "#353535"
+                }
+            ]
+        },
+        {
+            "sequence": 2,
+            "name": "items",
+            "properties": [
+                {
+                    "type": "text",
+                    "key": "title",
+                    "value": "Mission"
+                },
+                {
+                    "type": "text",
+                    "key": "body",
+                    "value": "PAEAN Biotechnology strives to develop revolutionary first-in-class medicinal products through a proprietary platform based on the unique characteristics of mitochondria. We have developed three platforms of MitoTransfer."
+                },
+                {
+                    "type": "style",
+                    "key": "background-color",
+                    "value": "#fff"
+                },
+                {
+                    "type": "style",
+                    "key": "background-image",
+                    "value": "http://www.paeanbio.com/themes/main/assets/images/homepage/bg-mssion.png"
+                }
+            ],
+            "items": [
+                {
+                    "sequence": 1,
+                    "properties": [
+                        {
+                            "type": "image",
+                            "key": "item-media",
+                            "value": "http://www.paeanbio.com/storage/app/media/home-missions/mitotransfer-therapeutics.png"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-title",
+                            "value": "Mitochondrial Therapeutics (MitoTherapy) Products"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-link",
+                            "value": "http://www.paeanbio.com/science#Mitochondrial-Therapeutics-(MitoTherapy)"
+                        }
+                    ]
+                },
+                {
+                    "sequence": 2,
+                    "properties": [
+                        {
+                            "type": "image",
+                            "key": "item-media",
+                            "value": "http://www.paeanbio.com/storage/app/media/home-missions/cell-therapeutics-augmented-by-mitotransfer.png"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-title",
+                            "value": "Mitochondrial Cell Therapy Products"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-link",
+                            "value": "http://www.paeanbio.com/science#cell-therapeutics-augmented-by-mitotransfer"
+                        }
+                    ]
+                },
+                {
+                    "sequence": 3,
+                    "properties": [
+                        {
+                            "type": "image",
+                            "key": "item-media",
+                            "value": "http://www.paeanbio.com/storage/app/media/home-missions/modified-mitotransfer.png"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-title",
+                            "value": "Modified MitoTherapy Products"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-link",
+                            "value": "http://www.paeanbio.com/science#modified-mitotransfer"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sequence": 3,
+            "name": "items",
+            "properties": [
+                {
+                    "type": "text",
+                    "key": "title",
+                    "value": "Milestone"
+                },
+                {
+                    "type": "text",
+                    "key": "body",
+                    "value": ""
+                },
+                {
+                    "type": "style",
+                    "key": "background-color",
+                    "value": "#2b2b2b"
+                },
+                {
+                    "type": "style",
+                    "key": "background-image",
+                    "value": "http://www.paeanbio.com/themes/main/assets/images/homepage/cells.png"
+                }
+            ],
+            "items": [
+                {
+                    "sequence": 1,
+                    "properties": [
+                        {
+                            "type": "text",
+                            "key": "item-title",
+                            "value": "Research Collaboration"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-subtitle",
+                            "value": "Seoul National University Hospital"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-body",
+                            "value": ""
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-foot",
+                            "value": "2018 - Now"
+                        }
+                    ]
+                },
+                {
+                    "sequence": 2,
+                    "properties": [
+                        {
+                            "type": "text",
+                            "key": "item-title",
+                            "value": "Pre-series A Funding"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-subtitle",
+                            "value": "Korea Investment Partners"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-body",
+                            "value": "KRW 1.5 B"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-foot",
+                            "value": "Jun 2018"
+                        }
+                    ]
+                },
+                {
+                    "sequence": 3,
+                    "properties": [
+                        {
+                            "type": "text",
+                            "key": "item-title",
+                            "value": "Series A Funding"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-subtitle",
+                            "value": "Korea Investment Partners, Hana Ventures, Timefolio"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-body",
+                            "value": "KRW 6 B"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-foot",
+                            "value": "Jun 2019"
+                        }
+                    ]
+                },
+                {
+                    "sequence": 4,
+                    "properties": [
+                        {
+                            "type": "text",
+                            "key": "item-title",
+                            "value": "Bridge Funding"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-subtitle",
+                            "value": "Korea Investment Partners, Hana Ventures, Timefolio"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-body",
+                            "value": "KRW 4.5 B"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-foot",
+                            "value": "Jan 2021"
+                        }
+                    ]
+                },
+                {
+                    "sequence": 5,
+                    "properties": [
+                        {
+                            "type": "text",
+                            "key": "item-title",
+                            "value": "Mitochondria GMP Facility"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-subtitle",
+                            "value": ""
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-body",
+                            "value": "Jung-gu, Seoul"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-foot",
+                            "value": "Jun 2021"
+                        }
+                    ]
+                },
+                {
+                    "sequence": 6,
+                    "properties": [
+                        {
+                            "type": "text",
+                            "key": "item-title",
+                            "value": "PN-101 MFDS IND Approval"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-subtitle",
+                            "value": "World-first allogeneic mitochondria as therapeutic agent"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-body",
+                            "value": ""
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-foot",
+                            "value": "Jun 2021"
+                        }
+                    ]
+                },
+                {
+                    "sequence": 7,
+                    "properties": [
+                        {
+                            "type": "text",
+                            "key": "item-title",
+                            "value": "Research Collaboration"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-subtitle",
+                            "value": "MOU with Soonchunhyang University Medical Center and SIMS"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-body",
+                            "value": ""
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-foot",
+                            "value": "Sep 2021 - Now"
+                        }
+                    ]
+                },
+                {
+                    "sequence": 8,
+                    "properties": [
+                        {
+                            "type": "text",
+                            "key": "item-title",
+                            "value": "Series B Funding"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-subtitle",
+                            "value": "Daol Investment, Hana Ventures, Timefolio, IMM Investment"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-body",
+                            "value": "KRW 7 B"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-foot",
+                            "value": "Sep 2022"
+                        }
+                    ]
+                },
+                {
+                    "sequence": 9,
+                    "properties": [
+                        {
+                            "type": "text",
+                            "key": "item-title",
+                            "value": "Research Collaboration"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-subtitle",
+                            "value": "MOU with YiPSCELL"
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-body",
+                            "value": ""
+                        },
+                        {
+                            "type": "text",
+                            "key": "item-foot",
+                            "value": "Dec 2022 - Now"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sequence": 4,
+            "name": "post",
+            "properties": [
+                {
+                    "type": "text",
+                    "key": "title",
+                    "value": "Press Highlights"
+                },
+                {
+                    "type": "filter",
+                    "key": "post-category",
+                    "value": "news"
+                },
+                {
+                    "type": "filter",
+                    "key": "post-length",
+                    "value": "3"
+                }
+            ]
+        }
+    ]
+}

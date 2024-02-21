@@ -1,0 +1,55 @@
+{
+    "header": {
+        "title": "PAEAN develops revolutionary first-in-class mitochondrial medicinal products.",
+        "subtitle": "",
+        "youtubeLink": "https://www.youtube.com/watch?v=OOpYY3999GY"
+    },
+    "leadership": [
+        {
+            "id": 1,
+            "name": "Kyuboem Han, PhD",
+            "position": "CEO / President",
+            "desc": "Dr. Han is the current CEO/President of PAEAN Biotech. Dr. Han has more than 35 years of experience in the development and commercialization of biopharmaceuticals, biomaterials, hyaluronate-related medicinal products and medical devices, cell therapy products, and various bio-related products, including cosmetics. Before founding PAEAN Biotechnology Inc. in 2013, Dr. Han was a principal research scientist at Lucky Biotech (USA) and LG Life Sciences (Korea) for 15 years. He served as President of the Bio Development Division at CHA Biotech and as President at Hanson Biotech. His works and dedication earned him several awards from LG Group and the Korean Government. Dr. Kim received his Ph.D. from the University of California, Irvine in 1994.",
+            "image": "HanKyuboemnew.png"
+        },
+        {
+            "id": 2,
+            "name": "Chun-Hyung Kim, PhD",
+            "position": "CSO / Senior VP",
+            "desc": "Dr. Kim majored in Molecular Neurobiology from the University of Tennessee where he obtained his Ph.D. Dr. Kim was a principal research scientist and team leader for more than 10 years at LG Life Science in Korea. In 2004, he joined the Molecular Neurobiology Laboratory at McLean Hospital/Harvard Medical School. Dr. Kim has issued 11 patents besides 53 patents as co-inventors and published more than 50 research papers. Currently, Dr. Kim has served as CSO and Senior Vice President at PAEAN since 2016.",
+            "image": "KimChunKyungnew.png"
+        },
+        {
+            "id": 3,
+            "name": "Hahnsun Jung, PhD",
+            "position": "CCO / Executive Director",
+            "desc": "Dr. Jung has more than 25 years of industrial experience in the development and commercialization of biopharmaceuticals, chemical new drugs, and medical device products. Prior to joining PAEAN, Dr. Jung was in the research institute of Boryung Pharmaceutical. Co., Ltd. Dr. Jung received her Ph.D. from Inha University in 2000. She joined PAEAN in 2019.",
+            "image": "JeongHanseonnew.png"
+        }
+    ],
+    "medical": [
+        {
+            "id": 1,
+            "name": "Hong Kyu Lee, MD, PhD",
+            "position": "",
+            "desc": "Professor Lee is an emeritus professor at Seoul National University College of Medicine, working almost 50 years at the Department of Endocrinology and Metabolism as a research-oriented clinical scientist. His career includes the directorship of the Department of Biomedical Sciences, Korean National Institute of Health, and the establishment of Korean Genome Epidemiology Studies (Ansung and Ansan cohorts). After a stint at Eulji University Medical School, he joined PAEAN Biotech as a full-time advisor in 2020. His major scientific achievement is the development of the mitochondria-based model of adult diseases, incorporating mitochondria and nuclear genomes and thermodynamic principles. He founded the Asian Society of Mitochondrial Research and Medicine (ASMRM) in 1983 and helped to start a Korean Society one (KSMRM), where he is the honorary president. Internationally, he serves as the vice president of the Asian Association of Study of Diabetes and a member of the Mitochondrial Physiology Society.",
+            "image": "LeeHongKyu.png"
+        }
+    ],
+    "european": [
+        {
+            "id": 1,
+            "name": "Dr. Cornelius Sobel",
+            "position": "",
+            "desc": "Cornelius Sobel has over 25 years of experience in the pharmaceutical industry. He gained extensive expertise in the areas of protein production and analytics, drug formulation, clinical development, and regulation. Beside the classical biotechnology area and biosimilars, Cornelius is working in the area of  Advanced Therapy Medicinal Products (ATMP) and medical devices. Using his market experience he is also developing reimbursement strategies for medical devices.",
+            "image": "cornelius_sobel.png"
+        },
+        {
+            "id": 2,
+            "name": "Dr. Peter-Michael Roettger",
+            "position": "",
+            "desc": "Peter Michael Roettger as a pharmacist has many years of experience in the management of companies and projects in the pharmaceutical sector, the diagnostic and medical device industry. He is a member of the German Dermatological Society (DDG), the German and European Diabetes Society (EASD). Furthermore, his expertise in this sector has been underlined through his appointment as Curator of the German Diabetes Foundation (DDS). His understanding of important medical and scientific contexts, coupled with market-strategic know-how make Peter the ideal technically experienced consultant in the field of life science.",
+            "image": "Peter_new.jpg"
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+{
+    "desc" : "PAEAN Biotechnology strives to develop revolutionary first-in-class medicinal products through a proprietary platform based on the unique characteristics of mitochondria. We have developed three platforms of MitoTransfer.",
+    "list" : [
+        {
+            "id": 1,
+            "image": "1.png",
+            "bgImage": "",
+            "position": "left",
+            "title": "Mitochondrial Therapeutics (MitoTherapy) Products",
+            "desc": "Mitochondrial Therapeutics are novel medicinal products using mitochondria isolated from human stem cells or human bloods. Mitochondria are unique organelles that are responsible for energy production in cells. Based on our experimental results, mitochondria have a high potential to treat inflammatory diseases.",
+            "dateTime": "2018 - Now"
+        },
+        {
+            "id": 2,
+            "image": "2.png",
+            "bgImage": "mito-cell.png",
+            "position": "end",
+            "title": "Mitochondrial Cell Therapy Products",
+            "desc": "Based on in vitro and in vivo studies, isolated mitochondria-enriched PBMC or NK cells can easily penetrate cells and enhance their cytotoxicity against tumor cells.",
+            "dateTime": "2018 - Now"
+        },
+        {
+            "id": 3,
+            "image": "3.png",
+            "bgImage": "antibodi.png",
+            "position": "left",
+            "title": "Modified MitoTherapy (Mitoceutical) Products",
+            "desc": "Mitochondria can be modified by applying PAEAN's proprietary platform technology to create a novel mitochondria complex to treat cancer. The modified mitochondria complex consists of a scFv (single-chain fragment of antibody) against cancer surface markers, with the protein and/or chemical payloads on the surface of mitochondria. This approach allows various 'drug substances' to be delivered straight into cells by targeting the specific cells based on the type of scFv. This platform technology is comparable to the Antibody Drug Conjugated (ADC) technology.",
+            "dateTime": "2018 - Now"
+        }
+    ]
+}

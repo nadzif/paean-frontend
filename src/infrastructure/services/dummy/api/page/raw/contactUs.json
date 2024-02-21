@@ -1,0 +1,56 @@
+{
+	"id": 5,
+	"slug": "contact-us",
+	"sections": [
+		{
+			"name": "contact",
+			"sequence": 1,
+			"properties": [
+				{
+					"id": 107,
+					"key": "title",
+					"value": {
+						"en": "Don’t Hesitate to contact us",
+						"kr": ""
+					}
+				},
+				{
+					"id": 108,
+					"key": "address",
+					"value": {
+						"en": "Eunkwang Bldg, 5 Samil-daero 8-gil, Jung-gu, Seoul",
+						"kr": ""
+					}
+				},
+				{
+					"id": 109,
+					"key": "email",
+					"value": {
+						"en": "Email: info@paeanbio.com",
+						"kr": ""
+					}
+				},
+				{
+					"id": 110,
+					"key": "phone",
+					"value": {
+						"en": "Phone: +82-2-2273-7095",
+						"kr": ""
+					}
+				},
+				{
+					"id": 111,
+					"key": "coordinate",
+					"value": {
+						"en": {
+							"lat": "37.573196",
+							"lng": "126.988716"
+						},
+						"kr": ""
+					}
+				}
+			],
+			"items": []
+		}
+	]
+}

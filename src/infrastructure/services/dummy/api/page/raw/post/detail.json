@@ -1,0 +1,23 @@
+
+{
+	"id": 6,
+	"category": "news",
+	"title": {
+		"en": "Ipsel and PianBio sign an agreement to develop mitochondrial regenerative medicine",
+		"kr": "입셀·파이안바이오, 미토콘드리아 재생의료 치료제 개발 협약"
+	},
+	"subtitle": {
+		"en": "",
+		"kr": ""
+	},
+	"content": {
+		"en": "<p>Source:&nbsp;<a href=\"https://www.hankyung.com/it/article/202212083036i\">https://www.hankyung.com/it/article/202212083036i</a></p>",
+		"kr": ""
+	},
+	"media": "http://localhost:3000/uploads/posts//uploads/posts/1c1d493ba8941f8daee54bc339ce0586.png",
+	"summary": {
+		"en": "Source:&nbsp;https://www.hankyung.com/it/article/202212083036i",
+		"kr": ""
+	},
+	"publishedAt": "2023-08-20T04:54:53.000Z"
+}

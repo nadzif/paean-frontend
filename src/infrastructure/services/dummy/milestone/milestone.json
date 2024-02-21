@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "image": "",
+        "title": "Research Collaboration 1",
+        "desc": "Seoul National University Hospital <br><br><br><br>",
+        "dateTime": "2018 - Now"
+    },
+    {
+        "id": 2,
+        "image": "",
+        "title": "Pre-series A Funding",
+        "desc": "Korea Investment Partners <br><br><br> KRW 1.5 B",
+        "dateTime": "Jun 2018"
+    },
+    {
+        "id": 3,
+        "image": "",
+        "title": "Series A Funding",
+        "desc": "Korea Investment Partners, Hana Ventures, Timefolio<br><br>KRW 6 B",
+        "dateTime": "Jun 2019"
+    },
+    {
+        "id": 4,
+        "image": "",
+        "title": "Bridge Funding",
+        "desc": "Korea Investment Partners, Hana Ventures, Timefolio<br><br>KRW 4.5 B",
+        "dateTime": "Jan 2021"
+    },
+    {
+        "id": 5,
+        "image": "",
+        "title": "Mitochondria GMP Facility",
+        "desc": "<br><br><br>Jung-gu, Seoul",
+        "dateTime": "Jun 2021"
+    },
+    {
+        "id": 6,
+        "image": "",
+        "title": "PN-101 MFDS IND Approval",
+        "desc": "World-first allogeneic mitochondria as therapeutic agent<br><br><br>",
+        "dateTime": "Jun 2021"
+    },
+    {
+        "id": 7,
+        "image": "",
+        "title": "Research Collaboration",
+        "desc": "MOU with Soonchunhyang University Medical Center and SIMS<br><br><br>",
+        "dateTime": "Sep 2021 - Now"
+    },
+    {
+        "id": 8,
+        "image": "",
+        "title": "Series B Funding",
+        "desc": "Daol Investment, Hana Ventures, Timefolio, IMM Investment<br><br>KRW 7 B",
+        "dateTime": "Sep 2022"
+    },
+    {
+        "id": 9,
+        "image": "",
+        "title": "Research Collaboration",
+        "desc": "MOU with YiPSCELL<br><br><br><br>",
+        "dateTime": "Dec 2022 - Now"
+    }
+]

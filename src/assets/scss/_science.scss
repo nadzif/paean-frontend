@@ -1,0 +1,99 @@
+@import 'variables.scss';
+@import 'media-query.scss';
+
+.section {
+    &.black {
+        background-color: #353535;
+        color: $light;
+
+        .content-title {
+            color: $light;
+        }
+    }
+
+    .section-title {
+        margin-bottom: 50px;
+    }
+}
+
+.science-content {
+    .section.bg {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        position: relative;
+        min-height: 700px;
+        display: flex;
+        align-items: center;
+
+        &::before {
+            content: ' ';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(36, 36, 36, 0.6);
+        }
+    }
+
+    .content-body {
+        font-size: 20px;
+    }
+}
+
+.science-pipline {
+    .pipline-group {
+        text-transform: uppercase;
+        padding: 0 10px;
+
+        font-size: 24px;
+        font-weight: bold;
+        font-family: $primary-font;
+        color: $black;
+    }
+}
+
+.cart-content {
+    min-width: 1100px;
+
+    .hc-title {
+        font-size: 15px;
+        font-family: $secondary-font;
+        font-weight: 600;
+        color: $black;
+        line-height: 1.5;
+    }
+
+    .header .hc-title,
+    .highcharts-yaxis-labels .hc-title {
+        text-transform: uppercase;
+        min-height: 40px;
+        margin-top: -10px;
+
+        display: flex;
+        align-items: flex-end;
+    }
+}
+
+.science-axis {
+    width: 100%;
+    height: 100%;
+
+    .header {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 100%;
+    }
+    & > span {
+        width: 100%;
+    }
+}
+
+@include desktop {
+    .chart-box {
+        overflow-x: scroll;
+    }
+}

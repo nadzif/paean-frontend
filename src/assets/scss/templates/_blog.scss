@@ -1,0 +1,122 @@
+/*=================================================================
+  Latest Posts
+==================================================================*/
+.blog-item-content{
+  h3{
+    line-height: 36px;
+  }
+
+  h3 a{
+    transition:all .4s ease 0s;
+    &:hover{
+      color: $primary-color!important;
+    }
+  }
+}
+
+.lh-36{
+  line-height: 36px;
+}
+
+
+.tags{
+  a{
+    background: #f5f8f9;
+    display: inline-block;
+    padding: 8px 23px;
+    border-radius: 38px;
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+}
+
+
+
+.pagination .nav-links a, .pagination .nav-links span.current {
+    font-size: 20px;
+    font-weight: 500;
+    color: #c9c9c9;
+    margin: 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+
+}
+
+
+.pagination .nav-links span.current, .pagination .nav-links a.next, .pagination .nav-links a.prev {
+     color: $black;
+}
+.single-blog-item blockquote, h3.quote {
+    font-size: 25px;
+    line-height: 50px;
+    font-weight: normal;
+    padding: 0px 25px 0px 85px;
+    margin: 65px 0 65px 0 !important;
+    position: relative;
+}
+
+.single-blog-item blockquote::before, h3.quote::before {
+    content: '';
+    width: 55px;
+    height: 2px;
+    background: $primary-color;
+    position: absolute;
+    top: 25px;
+    left: 0;
+}
+
+.single-blog-item img {
+  max-width: 100%;
+}
+
+.nav-posts-title{
+  line-height: 25px;
+  font-size: 18px;
+}
+
+.youtube-video {
+  overflow: hidden;
+  position: relative;
+  width:100%;
+
+}
+
+.youtube-video::after {
+  padding-top: 56.25%;
+  display: block;
+  content: '';
+}
+
+.youtube-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #242424;
+  border-radius: 5px;
+}
+
+.latest-blog{
+  position: relative;
+  @extend .overly-2;
+  padding-bottom: 150px;
+}
+
+.mt-70{
+  margin-top: -70px;
+}
+
+.border-1{
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.blog-item{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  .content {
+    word-wrap: break-word;
+  }
+}

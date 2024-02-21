@@ -1,0 +1,354 @@
+{
+	"id": 2,
+	"slug": "home",
+	"sections": [
+		{
+			"name": "hero",
+			"sequence": 1,
+			"properties": [
+				{
+					"id": 42,
+					"key": "title",
+					"value": {
+						"en": "Innovative Biopharmaceutical Company",
+						"kr": "Innovative Biopharmaceutical Company"
+					}
+				},
+				{
+					"id": 43,
+					"key": "subtitle",
+					"value": {
+						"en": "Based On Mitochondria",
+						"kr": "Based On Mitochondria"
+					}
+				},
+				{
+					"id": 44,
+					"key": "embed",
+					"value": {
+						"en": "https://paean-frontend.vercel.app/static/media/desktop.c5ca229ef1fcc10dda7d.mp4",
+						"kr": ""
+					}
+				}
+			],
+			"items": []
+		},
+		{
+			"name": "about",
+			"sequence": 2,
+			"properties": [
+				{
+					"id": 45,
+					"key": "title",
+					"value": {
+						"en": "Who We Are",
+						"kr": "Who We Are"
+					}
+				},
+				{
+					"id": 46,
+					"key": "description",
+					"value": {
+						"en": "<p>PAEAN Biotechnology, a pioneer in mitochondria-based therapeutics, is the first company to develop mitochondria as biopharmaceutical agents to treat diseases. Using our first-in-class proprietary technology of isolating, storing, and modifying mitochondria, we developed a revolutionary treatment to address rare diseases and cancer.</p>",
+						"kr": "<p>PAEAN Biotechnology, a pioneer in mitochondria-based therapeutics, is the first company to develop mitochondria as biopharmaceutical agents to treat diseases. Using our first-in-class proprietary technology of isolating, storing, and modifying mitochondria, we developed a revolutionary treatment to address rare diseases and cancer.</p>"
+					}
+				}
+			],
+			"items": []
+		},
+		{
+			"name": "mission",
+			"sequence": 3,
+			"properties": [
+				{
+					"id": 47,
+					"key": "title",
+					"value": {
+						"en": "Mission",
+						"kr": "Mission"
+					}
+				},
+				{
+					"id": 48,
+					"key": "description",
+					"value": {
+						"en": "<p>PAEAN Biotechnology strives to develop revolutionary first-in-class medicinal products through a proprietary platform based on the unique characteristics of mitochondria. We have developed three platforms of MitoTransfer.</p>",
+						"kr": ""
+					}
+				}
+			],
+			"items": [
+				{
+					"id": 63,
+					"sequence": 1,
+					"properties": [
+						{
+							"id": 49,
+							"key": "name",
+							"value": {
+								"en": "Mitochondrial Therapeutics (MitoTherapy) Products",
+								"kr": "Mitochondrial Therapeutics (MitoTherapy) Products"
+							}
+						},
+						{
+							"id": 50,
+							"key": "photo",
+							"value": {
+								"en": "http://www.paeanbio.com/storage/app/media/home-missions/mitotransfer-therapeutics.png"
+							}
+						},
+						{
+							"id": 51,
+							"key": "link",
+							"value": {
+								"en": "93",
+								"kr": ""
+							}
+						}
+					]
+				},
+				{
+					"id": 64,
+					"sequence": 2,
+					"properties": [
+						{
+							"id": 52,
+							"key": "name",
+							"value": {
+								"en": "Mitochondrial Cell Therapy Products",
+								"kr": "Mitochondrial Cell Therapy Products"
+							}
+						},
+						{
+							"id": 53,
+							"key": "photo",
+							"value": {
+								"en": "http://www.paeanbio.com/storage/app/media/home-missions/cell-therapeutics-augmented-by-mitotransfer.png"
+							}
+						},
+						{
+							"id": 54,
+							"key": "link",
+							"value": {
+								"en": "93",
+								"kr": ""
+							}
+						}
+					]
+				},
+				{
+					"id": 65,
+					"sequence": 3,
+					"properties": [
+						{
+							"id": 55,
+							"key": "name",
+							"value": {
+								"en": "Modified MitoTherapy Products",
+								"kr": "Modified MitoTherapy Products"
+							}
+						},
+						{
+							"id": 56,
+							"key": "photo",
+							"value": {
+								"en": "http://www.paeanbio.com/storage/app/media/home-missions/modified-mitotransfer.png"
+							}
+						},
+						{
+							"id": 57,
+							"key": "link",
+							"value": {
+								"en": "98",
+								"kr": ""
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "milestone",
+			"sequence": 4,
+			"properties": [
+				{
+					"id": 58,
+					"key": "title",
+					"value": {
+						"en": "Milestone",
+						"kr": "Milestone"
+					}
+				}
+			],
+			"items": [
+				{
+					"id": 66,
+					"sequence": 1,
+					"properties": [
+						{
+							"id": 59,
+							"key": "name",
+							"value": {
+								"en": "Research Collaboration",
+								"kr": "Research Collaboration"
+							}
+						},
+						{
+							"id": 60,
+							"key": "description",
+							"value": {
+								"en": "<p>Seoul National University Hospital</p>",
+								"kr": "<p>Seoul National University Hospital</p>"
+							}
+						},
+						{
+							"id": 61,
+							"key": "content",
+							"value": {
+								"en": "",
+								"kr": ""
+							}
+						},
+						{
+							"id": 62,
+							"key": "date",
+							"value": {
+								"en": "2018 - Now",
+								"kr": ""
+							}
+						}
+					]
+				},
+				{
+					"id": 67,
+					"sequence": 1,
+					"properties": [
+						{
+							"id": 63,
+							"key": "name",
+							"value": {
+								"en": "Pre-series A",
+								"kr": ""
+							}
+						},
+						{
+							"id": 64,
+							"key": "description",
+							"value": {
+								"en": "<p>Funding Korea Investment Partners</p>",
+								"kr": ""
+							}
+						},
+						{
+							"id": 65,
+							"key": "content",
+							"value": {
+								"en": "KRW 1.5 B",
+								"kr": ""
+							}
+						},
+						{
+							"id": 66,
+							"key": "date",
+							"value": {
+								"en": "Jun 2018",
+								"kr": ""
+							}
+						}
+					]
+				},
+				{
+					"id": 68,
+					"sequence": 1,
+					"properties": [
+						{
+							"id": 67,
+							"key": "name",
+							"value": {
+								"en": "Series A Funding",
+								"kr": ""
+							}
+						},
+						{
+							"id": 68,
+							"key": "description",
+							"value": {
+								"en": "<p>Korea Investment Partners, Hana Ventures, Timefolio</p>",
+								"kr": ""
+							}
+						},
+						{
+							"id": 69,
+							"key": "content",
+							"value": {
+								"en": "KRW 6 B",
+								"kr": ""
+							}
+						},
+						{
+							"id": 70,
+							"key": "date",
+							"value": {
+								"en": "Jun 2019",
+								"kr": ""
+							}
+						}
+					]
+				},
+				{
+					"id": 69,
+					"sequence": 1,
+					"properties": [
+						{
+							"id": 71,
+							"key": "name",
+							"value": {
+								"en": "Bridge Funding",
+								"kr": ""
+							}
+						},
+						{
+							"id": 72,
+							"key": "description",
+							"value": {
+								"en": "<p>Korea Investment Partners, Hana Ventures, Timefolio</p>",
+								"kr": ""
+							}
+						},
+						{
+							"id": 73,
+							"key": "content",
+							"value": {
+								"en": "KRW 4.5 B",
+								"kr": ""
+							}
+						},
+						{
+							"id": 74,
+							"key": "date",
+							"value": {
+								"en": "Jan 2021",
+								"kr": ""
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "press",
+			"sequence": 5,
+			"properties": [
+				{
+					"id": 75,
+					"key": "title",
+					"value": {
+						"en": "Press Highlights",
+						"kr": ""
+					}
+				}
+			],
+			"items": []
+		}
+	]
+}
