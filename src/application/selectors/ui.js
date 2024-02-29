@@ -5,6 +5,16 @@ export const getNews = state => state.news.news;
 export const getNewsLimit = state => state.news.newsLimit;
 export const getNewsDetail = state => state.news.detail;
 
+//blog
+export const getBlog = state => state.blog.blog;
+export const getBlogLimit = state => state.blog.blogLimit;
+export const getBlogDetail = state => state.blog.detail;
+
+//job
+export const getJob = state => state.job.job;
+export const getJobLimit = state => state.job.blogLimit;
+export const getJobDetail = state => state.job.detail;
+
 //milestone
 export const getMilestone = state => state.milestone.milestone;
 

@@ -1,16 +1,15 @@
-import { useSelector } from "react-redux";
-import { getNewsLimit } from "../../../../application/selectors/ui";
-import { TfiArrowCircleRight } from "react-icons/tfi";
+import {useSelector} from "react-redux";
+import {getNewsLimit} from "../../../../application/selectors/ui";
+import {TfiArrowCircleRight} from "react-icons/tfi";
 import moment from "moment";
 
 const HomeHighlightComp = (props) => {
-    var lng = localStorage.getItem("lng") || 'en';
     const news = useSelector(getNewsLimit);
     const dataProps = props.data;
     let title = '';
     for (const i of dataProps.properties) {
         if (i.key === "title") {
-            title = lng === 'kr' ? i.value.kr : i.value.en
+            title = props.lng === 'kr' ? i.value.kr : i.value.en
         }
     }
     return (
@@ -30,13 +29,14 @@ const HomeHighlightComp = (props) => {
 
                                     <div className="press-content">
                                         <h3 className="mb-3 lh-36">
-                                            {lng === 'kr' ? data.title.kr : data.title.en}
+                                            {props.lng === 'kr' ? data.title.kr : data.title.en}
                                         </h3>
                                         {/* <p>
                                             Source: {data.source}
                                         </p> */}
 
-                                        <a href={"/newscontent/" + data.id} className="btn btn-solid-border btn-round-full">
+                                        <a href={"/newscontent/" + data.id}
+                                           className="btn btn-solid-border btn-round-full">
                                             Read More &gt;&gt;
                                         </a>
 
@@ -49,7 +49,7 @@ const HomeHighlightComp = (props) => {
 
                     <div className="category-url">
                         <a href="/news">
-                            View All Highlights <TfiArrowCircleRight />
+                            View All Highlights <TfiArrowCircleRight/>
                         </a>
                     </div>
                 </div>

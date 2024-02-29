@@ -1,15 +1,14 @@
 import ReactPlayer from "react-player/youtube";
 
 const AboutMediaComp = (data) => {
-  var lng = localStorage.getItem("lng") || 'en';
   let title, subtitle, embed;
   for (const i of data.data.properties) {
     if (i.key === "title") {
-      title = lng === 'kr' ? i.value.kr : i.value.en
+      title = data.lng === 'kr' ? i.value.kr : i.value.en
     } else if (i.key === "subtitle") {
-      subtitle = lng === 'kr' ? i.value.kr : i.value.en
+      subtitle = data.lng === 'kr' ? i.value.kr : i.value.en
     } else if (i.key === "embed") {
-      embed = lng === 'kr' ? i.value.kr : i.value.en
+      embed = data.lng === 'kr' ? i.value.kr : i.value.en
     }
   }
   return (

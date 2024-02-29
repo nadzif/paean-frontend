@@ -1,20 +1,19 @@
 import parse from 'html-react-parser'
 
 const HomeMilestoneComp = (props) => {
-    var lng = localStorage.getItem("lng") || 'en';
     const dataProps = props.data;
     let BgImage = 'http://www.paeanbio.com/themes/main/assets/images/homepage/cells.png';
     let title = '';
     for (const i of dataProps.properties) {
         if (i.key === "title") {
-            title = lng === 'kr' ? i.value.kr : i.value.en
+            title = props.lng === 'kr' ? i.value.kr : i.value.en
         }
     }
     return (
         <>
             <section
                 className="section milestone"
-                style={{ backgroundImage: `url(${BgImage})` }}
+                style={{backgroundImage: `url(${BgImage})`}}
             >
                 <div className="container">
                     <h2 className="content-title">{title}</h2>
@@ -25,23 +24,24 @@ const HomeMilestoneComp = (props) => {
                                     {data.properties.map(data => {
                                         if (data.key === "name") {
                                             return <>
-                                                <h3>{lng === 'kr' ? data.value.kr : data.value.en}</h3>
+                                                <h3>{props.lng === 'kr' ? data.value.kr : data.value.en}</h3>
                                             </>;
                                         } else if (data.key === "description") {
                                             return <>
                                                 <div className="description">
-                                                    {parse(`${lng === 'kr' ? data.value.kr : data.value.en}`)}
+                                                    {parse(`${props.lng === 'kr' ? data.value.kr : data.value.en}`)}
                                                 </div>
                                             </>;
                                         } else if (data.key === "content") {
                                             return <>
                                                 <div className="description pt-lg-5">
-                                                    {parse(`${lng === 'kr' ? data.value.kr : data.value.en}`)}
+                                                    {parse(`${props.lng === 'kr' ? data.value.kr : data.value.en}`)}
                                                 </div>
                                             </>;
                                         } else if (data.key === "date") {
                                             return <>
-                                                <span className="date">{lng === 'kr' ? data.value.kr : data.value.en}</span>
+                                                <span
+                                                    className="date">{props.lng === 'kr' ? data.value.kr : data.value.en}</span>
                                             </>;
                                         }
 

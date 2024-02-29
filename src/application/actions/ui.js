@@ -3,6 +3,10 @@ export const SCIENCE_LOADED = '[science] page loaded';
 export const ABOUT_US_LOADED = '[about us] page loaded';
 export const NEWS_LOADED = '[news] page loaded';
 export const NEWS_CONTENT_LOADED = '[news content] page loaded';
+export const JOB_LOADED = '[job] page loaded';
+export const JOB_CONTENT_LOADED = '[job content] page loaded';
+export const BLOG_LOADED = '[blog] page loaded';
+export const BLOG_CONTENT_LOADED = '[blog content] page loaded';
 export const CONTACT_US_LOADED = '[contact us] page loaded';
 export const PRIVACY_STATEMENT_LOADED = '[privacy statement] page loaded';
 export const NO_PAGE_LOADED = '[no page] page loaded';
@@ -29,6 +33,26 @@ export const newsLoaded = news => ({
 export const newsContentLoaded = news => ({
     type: NEWS_CONTENT_LOADED,
     payload: news,
+});
+
+export const jobLoaded = job => ({
+    type: JOB_LOADED,
+    payload: job,
+});
+
+export const jobContentLoaded = job => ({
+    type: JOB_CONTENT_LOADED,
+    payload: job,
+});
+
+export const blogLoaded = blog => ({
+    type: BLOG_LOADED,
+    payload: blog,
+});
+
+export const blogContentLoaded = blog => ({
+    type: BLOG_CONTENT_LOADED,
+    payload: blog,
 });
 
 export const contactUsLoaded = {

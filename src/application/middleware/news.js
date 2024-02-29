@@ -1,6 +1,13 @@
-import { LOAD_NEWS, LOAD_NEWS_DETAIL, LOAD_NEWS_LIMIT_3, loadNewsDetailSuccess, loadNewsLimit3Success, loadNewsSuccess } from "../actions/news";
+import {
+    LOAD_NEWS,
+    LOAD_NEWS_DETAIL,
+    LOAD_NEWS_LIMIT_3,
+    loadNewsDetailSuccess,
+    loadNewsLimit3Success,
+    loadNewsSuccess
+} from "../actions/news";
 
-const newsLoadedFlow = ({ log, api }) => ({ dispatch }) => next => async (action) => {
+const newsLoadedFlow = ({log, api}) => ({dispatch}) => next => async (action) => {
     next(action);
 
     if (action.type === LOAD_NEWS) {

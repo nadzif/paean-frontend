@@ -1,7 +1,6 @@
 import parse from 'html-react-parser'
 
 const ScienceContentComp = (data) => {
-    var lng = localStorage.getItem("lng") || 'en';
     return <>
         {data.data.items.map(data => {
             let title = '';
@@ -12,9 +11,9 @@ const ScienceContentComp = (data) => {
             {
                 for (const i of data.properties) {
                     if (i.key === "title") {
-                        title = lng === 'kr' ? i.value.kr : i.value.en
+                        title = data.lng === 'kr' ? i.value.kr : i.value.en
                     } else if (i.key === "descriptions") {
-                        desc = lng === 'kr' ? i.value.kr : i.value.en
+                        desc = data.lng === 'kr' ? i.value.kr : i.value.en
                     } else if (i.key === "position") {
                         if (i.value.en === 'right') {
                             position = 'end'
@@ -22,9 +21,9 @@ const ScienceContentComp = (data) => {
                             position = 'center'
                         }
                     } else if (i.key === 'background-image') {
-                        bgImage = lng === 'kr' ? i.value.kr : i.value.en
+                        bgImage = data.lng === 'kr' ? i.value.kr : i.value.en
                     } else if (i.key === 'background-color') {
-                        bgColor = lng === 'kr' ? i.value.kr : i.value.en
+                        bgColor = data.lng === 'kr' ? i.value.kr : i.value.en
                     }
                 }
             }
@@ -57,7 +56,7 @@ const ScienceContentComp = (data) => {
                                         <div className="section-title">
                                             <h2
                                                 className="mt-3 content-title"
-                                                style={{ color: "white" }}
+                                                style={{color: "white"}}
                                             >
                                                 {title}
                                             </h2>

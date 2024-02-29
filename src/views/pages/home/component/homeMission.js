@@ -1,15 +1,14 @@
 import parse from 'html-react-parser'
 
 const HomeMissionComp = (props) => {
-    var lng = localStorage.getItem("lng") || 'en';
     const dataProps = props.data;
     let BgImage = 'http://www.paeanbio.com/themes/main/assets/images/homepage/bg-mssion.png';
     let title, desc;
     for (const i of dataProps.properties) {
         if (i.key === "title") {
-            title = lng === 'kr' ? i.value.kr : i.value.en
+            title = props.lng === 'kr' ? i.value.kr : i.value.en
         } else if (i.key === "description") {
-            desc = lng === 'kr' ? i.value.kr : i.value.en
+            desc = props.lng === 'kr' ? i.value.kr : i.value.en
         }
     }
 
@@ -17,7 +16,7 @@ const HomeMissionComp = (props) => {
         <>
             <section
                 className="section mission"
-                style={{ backgroundImage: `url(${BgImage})` }}
+                style={{backgroundImage: `url(${BgImage})`}}
             >
                 <div className="container">
                     <div className="row">
@@ -39,14 +38,17 @@ const HomeMissionComp = (props) => {
                                     {data.properties.map(data => {
                                         if (data.key === "photo") {
                                             return <>
-                                                <img className="media-object img-fluid rounded" src={lng === 'kr' ? data.value.kr : data.value.en} alt="img" />
+                                                <img className="media-object img-fluid rounded"
+                                                     src={props.lng === 'kr' ? data.value.kr : data.value.en}
+                                                     alt="img"/>
                                             </>;
                                         } else if (data.key === "name") {
                                             return <>
                                                 <div className="title">
-                                                    <h4>{lng === 'kr' ? data.value.kr : data.value.en}</h4>
+                                                    <h4>{props.lng === 'kr' ? data.value.kr : data.value.en}</h4>
                                                 </div>
-                                                <a href={"/science/" + lng === 'kr' ? data.value.kr : data.value.en} className="btn btn-solid-border btn-round-full">
+                                                <a href={"/science/" + props.lng === 'kr' ? data.value.kr : data.value.en}
+                                                   className="btn btn-solid-border btn-round-full">
                                                     Read more &gt;&gt;
                                                 </a>
                                             </>;

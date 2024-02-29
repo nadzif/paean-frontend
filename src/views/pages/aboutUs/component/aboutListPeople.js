@@ -1,7 +1,6 @@
 import AboutUsProfileComp from "./aboutProfile";
 
 const AboutListPeopleComp = (data) => {
-  var lng = localStorage.getItem("lng") || 'en';
   let title;
   let bgColor = "bg-gray"
   if (data.data.name === "medicalAdvisor") {
@@ -9,7 +8,7 @@ const AboutListPeopleComp = (data) => {
   }
   for (const i of data.data.properties) {
     if (i.key === "title") {
-      title = lng === 'kr' ? i.value.kr : i.value.en
+      title = data.lng === 'kr' ? i.value.kr : i.value.en
     }
   }
   return (

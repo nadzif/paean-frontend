@@ -1,6 +1,8 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 import ui from './ui';
 import news from './news';
+import blog from './blog';
+import job from './job';
 import milestone from './milestone';
 import mission from './mission';
 import about from './about';
@@ -12,6 +14,8 @@ import home from './home';
 export default combineReducers({
     ui,
     news,
+    blog,
+    job,
     milestone,
     mission,
     about,
