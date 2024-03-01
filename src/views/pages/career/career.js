@@ -38,7 +38,7 @@ const CareerPage = () => {
                                     <div className="col-lg-6 col-md-12 col-sm-12">
                                         <div className="contact-content pl-lg-5 mt-5 mt-lg-0">
                                             <h3>
-                                                <a href={"/job/" + page}>
+                                                <a href={`/career/${page}/${data.id}`}>
                                                     {lng === 'en' ? (data.title.en || data.title.kr) : (data.title.kr || data.title.en)}
                                                     YPJ Support Services Coordinator
                                                 </a>
@@ -63,14 +63,14 @@ const CareerPage = () => {
                                             {
                                                 moment().format('LLL') >= moment(data.applicationDeadline).format('LLL') && data.is_active === true
                                                     ? <Link
-                                                        to={`/job/${page}/${data.id}`}
-                                                        className="btn btn-medium btn-main btn-round-full"
+                                                        to={`/career/${page}/${data.id}`}
+                                                        className="btn btn-medium btn-main btn-round-full disabled"
                                                     >
                                                         Apply
                                                     </Link>
                                                     :
                                                     <Link
-                                                        to={`/job/${page}/${data.id}`}
+                                                        to={`/career/${page}/${data.id}`}
                                                         className="btn btn-medium btn-main btn-round-full"
                                                     >
                                                         Apply

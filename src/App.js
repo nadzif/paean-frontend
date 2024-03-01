@@ -35,8 +35,8 @@ function App() {
                         <Route path="/privacy-statement" element={<PrivacyStatementPage/>}/>
                         <Route path="/cookie-policy" element={<CookiePolicyPage/>}/>
                         <Route path="/career" element={<CareerPage/>}/>
-                        <Route path="/job/:page/:id?" element={<DetailJobPage/>}/>
-                        <Route path="/job/:page/:id?/apply" element={<SubmitJobPage/>}/>
+                        <Route path="/career/:page/:id?" element={<DetailJobPage/>}/>
+                        <Route path="/career/:page/:id?/apply" element={<SubmitJobPage/>}/>
                         <Route path="*" element={<NoPage/>}/>
                     </Route>
                 </Routes>
