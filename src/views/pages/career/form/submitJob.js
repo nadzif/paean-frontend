@@ -5,6 +5,7 @@ import {TfiBriefcase, TfiLocationPin} from "react-icons/tfi";
 import {useLanguage} from "../../../components/utils/LanguageProvider";
 import {useParams} from "react-router-dom";
 import {getJob} from "../../../../application/selectors/ui";
+import axios from "axios";
 
 const SubmitJobPage = () => {
     const {lng} = useLanguage();
@@ -107,10 +108,16 @@ const SubmitJobPage = () => {
         // console.log(formData)
 
         try {
-            const response = await fetch('http://paean-api.live-version.com/applicant', {
-                method: 'POST',
-                body: formData,
-            });
+            // const response = await fetch('http://paean-api.live-version.com/applicant', {
+            //     method: 'POST',
+            //     body: formData,
+            // });
+
+            const response = await axios.post('http://paean-api.live-version.com/api/applicant', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                }
+            })
 
             if (response.ok) {
                 console.log('Data berhasil disimpan ke API');
