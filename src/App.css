@@ -1,65 +1,65 @@
 #background-header {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
 }
 
 .centerTitle {
-  width: 100%;
-  display: inline-block;
-  padding-right: 20%;
-  padding-left: 20%;
-  margin-right: auto;
-  margin-left: auto;
-  font-family: "Poppins", sans-serif;
-  color: white;
-  text-align: left;
+    width: 100%;
+    display: inline-block;
+    padding-right: 20%;
+    padding-left: 20%;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    text-align: left;
 }
 
 .centerTitle .title {
-  font-size: 6vw;
-  line-height: normal;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 0;
-  margin-top: 15vh;
+    font-size: 4vw;
+    line-height: normal;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0;
+    margin-top: 15vh;
 }
 
 .centerTitle .subtitle {
-  font-size: 3vw;
-  color: #fff;
+    font-size: 2vw;
+    color: #fff;
 }
 
 .mainPage {
-  background-color: white;
-  margin-top: 50vh;
-  position: relative;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  font-size: 17px;
+    background-color: white;
+    margin-top: 50vh;
+    position: relative;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
 }
 
 .linkText {
-  background-color: transparent;
-  text-decoration: none;
-  color: white;
+    background-color: transparent;
+    text-decoration: none;
+    color: white;
 }
 
 .centerHeader {
-  color: white;
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  top: 50%;
-  margin-top: -25px;
+    color: white;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    top: 50%;
+    margin-top: -25px;
 }
 
 .opacityBg {
-  background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 }

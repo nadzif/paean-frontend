@@ -1,4 +1,5 @@
 import parse from 'html-react-parser'
+import {Link} from "react-router-dom";
 
 const HomeMissionComp = (props) => {
     const dataProps = props.data;
@@ -47,10 +48,15 @@ const HomeMissionComp = (props) => {
                                                 <div className="title">
                                                     <h4>{props.lng === 'kr' ? data.value.kr : data.value.en}</h4>
                                                 </div>
-                                                <a href={"/science/" + props.lng === 'kr' ? data.value.kr : data.value.en}
-                                                   className="btn btn-solid-border btn-round-full">
+                                            </>;
+                                        } else if (data.key === "link") {
+                                            return <>
+                                                <Link
+                                                    to={"/science/" + data.id}
+                                                    className="btn btn-solid-border btn-round-full"
+                                                >
                                                     Read more &gt;&gt;
-                                                </a>
+                                                </Link>
                                             </>;
                                         }
 

@@ -8,7 +8,7 @@ const ProgressBarTable = () => {
     const [pipeline, setPipeline] = useState([])
 
     const getPhase = async () => {
-        await axios.get('http://paean-api.live-version.com/phase')
+        await axios.get('/phase')
             .then((response) => {
                 setPhase(response.data.data)
             })
@@ -18,7 +18,7 @@ const ProgressBarTable = () => {
     }
 
     const getPipeline = async () => {
-        await axios.get('http://paean-api.live-version.com/pipeline')
+        await axios.get('/pipeline')
             .then((response) => {
                 setPipeline(response.data.data)
             })

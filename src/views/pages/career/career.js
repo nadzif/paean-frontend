@@ -61,7 +61,7 @@ const CareerPage = () => {
                                     <div className="col-lg-5 col-sm-12">
                                         <div className="contact-content mt-5 mt-lg-0" style={{float: 'right'}}>
                                             {
-                                                moment().format('LLL') >= moment(data.applicationDeadline).format('LLL') && data.is_active === true
+                                                moment().format('LLL') <= moment(data.applicationDeadline).format('LLL') && data.is_active
                                                     ? <Link
                                                         to={`/career/${page}/${data.id}`}
                                                         className="btn btn-medium btn-main btn-round-full disabled"

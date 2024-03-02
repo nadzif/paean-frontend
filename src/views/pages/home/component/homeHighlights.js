@@ -2,6 +2,7 @@ import {useSelector} from "react-redux";
 import {getNewsLimit} from "../../../../application/selectors/ui";
 import {TfiArrowCircleRight} from "react-icons/tfi";
 import moment from "moment";
+import {Link} from "react-router-dom";
 
 const HomeHighlightComp = (props) => {
     const news = useSelector(getNewsLimit);
@@ -35,10 +36,12 @@ const HomeHighlightComp = (props) => {
                                             Source: {data.source}
                                         </p> */}
 
-                                        <a href={"/newscontent/" + data.id}
-                                           className="btn btn-solid-border btn-round-full">
+                                        <Link
+                                            to={`/content/news/1/` + data.id}
+                                            className="btn btn-solid-border btn-round-full"
+                                        >
                                             Read More &gt;&gt;
-                                        </a>
+                                        </Link>
 
                                         <div className="release-date">{moment(data.publishedAt).format('LLL')}</div>
                                     </div>
@@ -48,9 +51,9 @@ const HomeHighlightComp = (props) => {
                     </div>
 
                     <div className="category-url">
-                        <a href="/news">
-                            View All Highlights <TfiArrowCircleRight/>
-                        </a>
+                        <Link to="/news">
+                            View All {title} <TfiArrowCircleRight/>
+                        </Link>
                     </div>
                 </div>
             </section>

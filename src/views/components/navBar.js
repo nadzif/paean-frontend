@@ -6,7 +6,7 @@ import "../../assets/css/navBar.css";
 import Logo from "../../assets/media/images/logo/logo.png";
 import LogoWhite from "../../assets/media/images/logo/logo-white.png";
 import {useEffect, useState} from "react";
-import {Outlet} from "react-router-dom";
+import {Link, Outlet, useLocation} from "react-router-dom";
 import FooterComp from "./footer";
 import {NavDropdown} from "react-bootstrap";
 import Usa from "../../assets/media/images/flag/usa.png";
@@ -14,8 +14,10 @@ import Korea from "../../assets/media/images/flag/korea.png";
 import {LanguageProvider} from "./utils/LanguageProvider";
 
 const NavbarComp = () => {
+    const location = useLocation();
     const [onTopPage, setOnTopPage] = useState(true);
     const [language, setLanguage] = useState(localStorage.getItem("lng"));
+    const [activeItem, setActiveItem] = useState(location.pathname.substring(1));
 
     const handleMouseOver = () => {
         setOnTopPage(false);
@@ -66,58 +68,103 @@ const NavbarComp = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="justify-content-end flex-grow-1 pe-3">
-                            <Nav.Link href="/" className="buttonSizeNav" style={{color: onTopPage ? "white" : "black"}}>
-                                {
-                                    language === 'en' ? 'HOME' : language === 'kr' ? '집' : ''
-                                }
+                            <Nav.Link>
+                                <Link
+                                    to="/"
+                                    className="buttonSizeNav"
+                                    style={{
+                                        color: onTopPage ? (activeItem === 'home' ? 'rgba(50, 250, 148, 0.8)' : 'white') : (activeItem === 'home' ? 'rgba(50, 250, 148, 0.8)' : 'black'),
+                                    }}
+                                    onClick={() => {
+                                        setActiveItem('home');
+                                    }}
+                                >
+                                    {language === 'en' ? 'HOME' : language === 'kr' ? '집' : ''}
+                                </Link>
                             </Nav.Link>
-                            <Nav.Link
-                                href="/science"
-                                className="buttonSizeNav"
-                                style={{color: onTopPage ? "white" : "black"}}
-                            >
-                                {
-                                    language === 'en' ? 'SCIENCE' : language === 'kr' ? '과학' : ''
-                                }
+                            <Nav.Link>
+                                <Link
+                                    to="/science"
+                                    className="buttonSizeNav"
+                                    style={{
+                                        color: onTopPage ? (activeItem === 'science' ? 'rgba(50, 250, 148, 0.8)' : 'white') : (activeItem === 'science' ? 'rgba(50, 250, 148, 0.8)' : 'black')
+                                    }}
+                                    onClick={() => {
+                                        setActiveItem('science');
+                                    }}
+                                >
+                                    {
+                                        language === 'en' ? 'SCIENCE' : language === 'kr' ? '과학' : ''
+                                    }
+                                </Link>
                             </Nav.Link>
-                            <Nav.Link
-                                href="/aboutus"
-                                className="buttonSizeNav"
-                                style={{color: onTopPage ? "white" : "black"}}
-                            >
-                                {
-                                    language === 'en' ? 'ABOUT US' : language === 'kr' ? '회사 소개' : ''
-                                }
+                            <Nav.Link>
+                                <Link
+                                    to="/aboutus"
+                                    className="buttonSizeNav"
+                                    style={{
+                                        color: onTopPage ? (activeItem === 'aboutUs' ? 'rgba(50, 250, 148, 0.8)' : 'white') : (activeItem === 'aboutUs' ? 'rgba(50, 250, 148, 0.8)' : 'black')
+                                    }}
+                                    onClick={() => {
+                                        setActiveItem('aboutUs');
+                                    }}
+                                >
+                                    {
+                                        language === 'en' ? 'ABOUT US' : language === 'kr' ? '회사 소개' : ''
+                                    }
+                                </Link>
                             </Nav.Link>
-                            <Nav.Link
-                                href="/news"
-                                className="buttonSizeNav"
-                                style={{color: onTopPage ? "white" : "black"}}
-                            >
-                                {
-                                    language === 'en' ? 'NEWS' : language === 'kr' ? '소식' : ''
-                                }
+                            <Nav.Link>
+                                <Link
+                                    to="/news"
+                                    className="buttonSizeNav"
+                                    style={{
+                                        color: onTopPage ? (activeItem === 'news' ? 'rgba(50, 250, 148, 0.8)' : 'white') : (activeItem === 'news' ? 'rgba(50, 250, 148, 0.8)' : 'black')
+                                    }}
+                                    onClick={() => {
+                                        setActiveItem('news');
+                                    }}
+                                >
+                                    {
+                                        language === 'en' ? 'NEWS' : language === 'kr' ? '소식' : ''
+                                    }
 
+                                </Link>
                             </Nav.Link>
-                            <Nav.Link
-                                href="/career"
-                                className="buttonSizeNav"
-                                style={{color: onTopPage ? "white" : "black"}}
-                            >
-                                {
-                                    language === 'en' ? 'CAREER' : language === 'kr' ? '직업' : ''
-                                }
+                            <Nav.Link>
+                                <Link
+                                    to="/career"
+                                    className="buttonSizeNav"
+                                    style={{
+                                        color: onTopPage ? (activeItem === 'career' ? 'rgba(50, 250, 148, 0.8)' : 'white') : (activeItem === 'career' ? 'rgba(50, 250, 148, 0.8)' : 'black')
+                                    }}
+                                    onClick={() => {
+                                        setActiveItem('career');
+                                    }}
+                                >
+                                    {
+                                        language === 'en' ? 'CAREER' : language === 'kr' ? '직업' : ''
+                                    }
+                                </Link>
                             </Nav.Link>
-                            <Nav.Link
-                                href="/contactus"
-                                className="buttonSizeNav"
-                                style={{color: onTopPage ? "white" : "black"}}
-                            >
-                                {
-                                    language === 'en' ? 'CONTACT US' : language === 'kr' ? '문의하기' : ''
-                                }
+                            <Nav.Link>
+                                <Link
+                                    to="/contactus"
+                                    className="buttonSizeNav"
+                                    style={{
+                                        color: onTopPage ? (activeItem === 'contactUs' ? 'rgba(50, 250, 148, 0.8)' : 'white') : (activeItem === 'contactUs' ? 'rgba(50, 250, 148, 0.8)' : 'black')
+                                    }}
+                                    onClick={() => {
+                                        setActiveItem('contactUs');
+                                    }}
+                                >
+                                    {
+                                        language === 'en' ? 'CONTACT US' : language === 'kr' ? '문의하기' : ''
+                                    }
 
+                                </Link>
                             </Nav.Link>
+
                             <NavDropdown
                                 title={
                                     <Image

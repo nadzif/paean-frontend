@@ -8,6 +8,7 @@ import parse from 'html-react-parser'
 import NewsListNewsLoading from "../../components/skeletonLoading/news/newsListNewsLoading";
 import moment from "moment";
 import {useLanguage} from '../../components/utils/LanguageProvider';
+import axios from "axios";
 
 const NewsPage = () => {
     const {lng} = useLanguage();
@@ -89,7 +90,7 @@ const NewsPage = () => {
                                         >
                                             <h3 className="mt-3 mb-3">
                                                 <Link
-                                                    to={`/newscontent/` + data.id}
+                                                    to={`/content/news/` + pageNews + '/' + data.id}
                                                     state={data}
                                                 >
                                                     {lng === 'en' ? (data.title.en || data.title.kr) : (data.title.kr || data.title.en)}

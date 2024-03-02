@@ -81,10 +81,10 @@ const Hero = (data) => {
                     muted
                 />
                 <div className="centerTitle">
-                    <h1 className="title">
+                    <h3 className="title">
                         {title}
-                    </h1>
-                    <h2 className="subtitle">{subtitle}</h2>
+                    </h3>
+                    <h4 className="subtitle">{subtitle}</h4>
                 </div>
             </div>
         </>
