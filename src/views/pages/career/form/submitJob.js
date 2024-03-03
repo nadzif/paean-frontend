@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {jobLoaded, noPageLoaded} from "../../../../application/actions/ui";
 import {TfiBriefcase, TfiLocationPin} from "react-icons/tfi";
 import {useLanguage} from "../../../components/utils/LanguageProvider";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {getJob} from "../../../../application/selectors/ui";
 import axios from "axios";
 import moment from "moment/moment";
@@ -13,6 +13,8 @@ const SubmitJobPage = () => {
     const {id, page} = useParams();
     const job = useSelector(getJob);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const [fieldData, setFieldData] = useState({
         email: '',
         phone: '',
@@ -22,16 +24,20 @@ const SubmitJobPage = () => {
         cover_letter: '',
         additional_information: '',
         resume: null,
-        degree_certificate: null,
-        other_certificate: null,
+        degree_certificate: [],
+        other_certificate: [],
     });
     const [selectedFiles, setSelectedFiles] = useState({
-        resume: [], degree_certificate: [], other_certificate: [],
+        resume: null,
+        degree_certificate: [],
+        other_certificate: [],
     });
     const [totalSize, setTotalSize] = useState(0);
+    const [loading, setLoading] = useState(false);
+    const [progressUpload, stProgressUpload] = useState(0);
     const [dataDetail, setDataDetail] = useState(null);
 
-    const validation = (fieldData.full_name !== '' && fieldData.email !== '' && fieldData.phone !== '' && fieldData.address !== '' && fieldData.resume !== null && fieldData.degree_certificate !== null && fieldData.other_certificate !== null)
+    const validation = (fieldData.full_name !== '' && fieldData.email !== '' && fieldData.phone !== '' && fieldData.address !== '' && fieldData.resume !== null && totalSize <= (15 * 1024 * 1024))
 
     const detail = () => {
         if (job && job.data) {
@@ -41,7 +47,10 @@ const SubmitJobPage = () => {
     };
 
     const handleFileChange = (field, files) => {
-        if ((field === 'resume' && files.length !== 1) || ((field === 'degree_certificate' || field === 'other_certificate') && files.length > 5)) {
+        if (
+            (field === 'resume' && files.length !== 1) ||
+            ((field === 'degree_certificate' || field === 'other_certificate') && files.length > 5)
+        ) {
             alert(`Invalid number of files for ${field}.`);
             return;
         }
@@ -54,11 +63,19 @@ const SubmitJobPage = () => {
             }
         }
 
-        setSelectedFiles((prevFiles) => ({
-            ...prevFiles, [field]: [...prevFiles[field], ...files],
-        }));
-
-        setFieldData({...fieldData, [field]: files});
+        if (field === 'resume') {
+            setSelectedFiles((prevFiles) => ({
+                ...prevFiles,
+                [field]: files[0],
+            }));
+            setFieldData({...fieldData, [field]: files[0]});
+        } else {
+            setSelectedFiles((prevFiles) => ({
+                ...prevFiles,
+                [field]: [...prevFiles[field], ...files],
+            }));
+            setFieldData({...fieldData, [field]: [...fieldData[field], ...files]});
+        }
     };
 
     const removeFile = (field, index) => {
@@ -93,13 +110,14 @@ const SubmitJobPage = () => {
 
     const save = async (e) => {
         e.preventDefault();
+        setLoading(true)
         const formData = new FormData();
 
         Object.entries(fieldData).forEach(([key, value]) => {
             if (value !== null) {
                 if (Array.isArray(value)) {
                     for (let i = 0; i < value.length; i++) {
-                        formData.append(`${key}[]`, value[i]);
+                        formData.append(`${key}`, value[i]);
                     }
                 } else {
                     formData.append(key, value);
@@ -108,78 +126,94 @@ const SubmitJobPage = () => {
         });
 
         try {
-
-            const response = await axios.post('http://paean-api.live-version.com/api/applicant', formData, {
+            const response = await axios.post('/applicant', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                }
+                },
+                onUploadProgress: (progressEvent) => {
+                    const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+                    stProgressUpload(progress)
+                },
             })
 
-            if (response.ok) {
+            if (response.status === 201) {
                 console.log('Data berhasil disimpan ke API');
+                setFieldData({
+                    email: '',
+                    phone: '',
+                    address: '',
+                    references: '',
+                    full_name: '',
+                    cover_letter: '',
+                    additional_information: '',
+                    resume: null,
+                    degree_certificate: null,
+                    other_certificate: null,
+                })
+                setSelectedFiles({
+                    resume: [], degree_certificate: [], other_certificate: [],
+                })
+                setLoading(false)
+                window.alert('Success to Send Application')
+                navigate('/career')
             } else {
+                setLoading(false)
                 console.error('Gagal menyimpan data ke API');
             }
         } catch (error) {
+            setLoading(false)
+            window.alert('Failed to Send Application')
             console.error('Terjadi kesalahan:', error);
         }
     };
 
-
     return (<>
-        <div style={{paddingBottom: "20%"}}>
+        <div>
+            {/*<img src={BgHeader} alt="" id="background-header"/>*/}
             <div id="background-header" className="opacityBg"/>
-            <div className="text-center centerHeader">
-                {dataDetail && (<>
-                    <h1 className="text-capitalize mb-4 text-lg" style={{color: 'white'}}>
-                        {lng === 'en' ? (dataDetail.title.en || dataDetail.title.kr) : (dataDetail.title.kr || dataDetail.title.en)}
-                        YPJ Support Services Coordinator
-                    </h1>
-                    <div>
-                        <TfiLocationPin size={20} className="me-3"/>
-                        {lng === 'en' ? (dataDetail.location.en || dataDetail.location.kr) : (dataDetail.location.kr || dataDetail.location.en)}
-                        Tembagapura, Papua, Indonesia
-                    </div>
-                    <div>
-                        <TfiBriefcase size={20} className="me-3"/>
-                        {lng === 'en' ? (dataDetail.employment_type.en || dataDetail.employment_type.kr) : (dataDetail.employment_type.kr || dataDetail.employment_type.en)}
-                        Kontraktor
-                    </div>
-                </>)}
-            </div>
+            <h1 className="text-center centerHeader text-capitalize mb-4 text-lg">
+                {/*{type} Content*/}
+            </h1>
         </div>
-        <div className="mainPage">
+        <div className="contentPage">
             <section className="contact-form-wrap section">
                 <div className="container mb-4">
-                    {
-                        dataDetail && (
-                            <>
-                                <h4 className="mb-5">
-                                    {lng === 'en'
-                                        ? ('About ' + dataDetail.title.en || '에 대한' + dataDetail.title.kr)
-                                        : ('에 대한' + dataDetail.title.kr || 'About ' + dataDetail.title.en)}
-                                </h4>
-                                <p>
-                                    {lng === 'en' ? (dataDetail.description.en || dataDetail.description.kr) : (dataDetail.description.kr || dataDetail.description.en)}
-                                </p>
-                                {/*---------------------------------------------------------------*/}
-                                <br/>
-                                <h4><strong>{lng === 'en' ? 'MINIMUM REQUIREMENTS' : '최소 요건'}</strong></h4>
-                                <br/>
-                                <p>
-                                    {lng === 'en' ? (dataDetail.qualifications.en || dataDetail.qualifications.kr) : (dataDetail.qualifications.kr || dataDetail.qualifications.en)}
-                                </p>
-                                <br/>
-                                {/*---------------------------------------------------------------*/}
-                                <h4><strong>{lng === 'en' ? 'APPLICATION DEADLINE' : '신청 마감'}</strong></h4>
-                                <p>{moment(dataDetail.applicationDeadline).format('LLL')}</p>
-                            </>
-                        )
-                    }
+                    {dataDetail && (<>
+                        <h3 className="text-capitalize mb-4 text-lg">
+                            {lng === 'en' ? (dataDetail.title.en || dataDetail.title.kr) : (dataDetail.title.kr || dataDetail.title.en)}
+                        </h3>
+                        <div>
+                            <TfiLocationPin size={20} className="me-3"/>
+                            {lng === 'en' ? (dataDetail.location.en || dataDetail.location.kr) : (dataDetail.location.kr || dataDetail.location.en)}
+                        </div>
+                        <div>
+                            <TfiBriefcase size={20} className="me-3"/>
+                            {lng === 'en' ? (dataDetail.employment_type.en || dataDetail.employment_type.kr) : (dataDetail.employment_type.kr || dataDetail.employment_type.en)}
+                        </div>
+                    </>)}
+                    {dataDetail && (<>
+                        <h4 className="mt-5 mb-3">
+                            {lng === 'en' ? ('About ' + dataDetail.title.en || '에 대한' + dataDetail.title.kr) : ('에 대한' + dataDetail.title.kr || 'About ' + dataDetail.title.en)}
+                        </h4>
+                        <p>
+                            {lng === 'en' ? (dataDetail.description.en || dataDetail.description.kr) : (dataDetail.description.kr || dataDetail.description.en)}
+                        </p>
+                        {/*---------------------------------------------------------------*/}
+                        <h4><strong>{lng === 'en' ? 'MINIMUM REQUIREMENTS' : '최소 요건'}</strong></h4>
+                        <p>
+                            {lng === 'en' ? (dataDetail.qualifications.en || dataDetail.qualifications.kr) : (dataDetail.qualifications.kr || dataDetail.qualifications.en)}
+                        </p>
+                        {/*---------------------------------------------------------------*/}
+                        <h4><strong>{lng === 'en' ? 'APPLICATION DEADLINE' : '신청 마감'}</strong></h4>
+                        <p>{moment(dataDetail.applicationDeadline).format('LLL')}</p>
+                    </>)}
                 </div>
                 <div className="container">
-                    <form onSubmit={(event) => save(event)}>
+                    <div className=" mb-3">
+                        <h4><strong>{lng === 'en' ? 'APPLY FOR JOB' : '구직 신청하다'}</strong></h4>
+                    </div>
 
+                    <form onSubmit={(event) => save(event)}>
                         <div className="form-group">
                             <div>{lng === 'en' ? 'Name' : '이름'}</div>
                             <input
@@ -232,6 +266,17 @@ const SubmitJobPage = () => {
                                 onChange={(e) => setFieldData({...fieldData, address: e.target.value})}
                             />
                         </div>
+                        <div className="form-group">
+                            <div>{lng === 'en' ? 'References' : '참고자료'}</div>
+                            <textarea
+                                id="megakitreferences"
+                                name="references"
+                                className="form-control"
+                                placeholder={lng === 'en' ? 'References' : '참고자료'}
+                                value={fieldData.references}
+                                onChange={(e) => setFieldData({...fieldData, references: e.target.value})}
+                            />
+                        </div>
                         <div style={{paddingBottom: '15px'}}>
                             <div>{lng === 'en' ? 'Curriculum Vitae' : '이력서'}</div>
                             <input
@@ -245,13 +290,13 @@ const SubmitJobPage = () => {
                             />
                         </div>
                         <div style={{paddingBottom: '15px'}}>
-                            <div>{lng === 'en' ? 'Curriculum Vitae' : '학위증명서'}</div>
+                            <div>{lng === 'en' ? 'Degree Certificate' : '학위 증명서'}</div>
                             <input
                                 id="megakitbachelor"
                                 name="degree_certificate"
                                 type="file"
                                 className="form-control"
-                                placeholder={lng === 'en' ? 'Curriculum Vitae' : '학위증명서'}
+                                placeholder={lng === 'en' ? 'Degree Certificate' : '학위 증명서'}
                                 multiple
                                 onChange={(e) => handleFileChange('degree_certificate', e.target.files)}
                             />
@@ -337,13 +382,25 @@ const SubmitJobPage = () => {
                         <progress max={15 * 1024 * 1024} value={totalSize} className="w-100"></progress>
 
                         <div>
-                            <button
-                                // className="btn btn-medium btn-main btn-round-full mt-3"
-                                className={`btn btn-medium btn-main btn-round-full mt-3 ${validation ? '' : 'disabled'}`}
-                                type="submit"
-                            >
-                                {lng === 'en' ? 'Apply' : '적용하다'}
-                            </button>
+                            {
+                                loading
+                                    ?
+                                    <button
+                                        className={`btn btn-medium btn-main btn-round-full mt-3 disabled`}
+                                        type="submit"
+                                    >
+
+                                        {progressUpload + ' %'}
+                                    </button>
+                                    :
+                                    <button
+                                        className={`btn btn-medium btn-main btn-round-full mt-3 ${validation ? '' : 'disabled'}`}
+                                        type="submit"
+                                    >
+
+                                        {lng === 'en' ? 'Send Application' : '신청서 보내기'}
+                                    </button>
+                            }
                         </div>
                     </form>
 
