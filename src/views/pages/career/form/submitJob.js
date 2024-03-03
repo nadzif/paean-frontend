@@ -179,7 +179,7 @@ const SubmitJobPage = () => {
             <section className="contact-form-wrap section">
                 <div className="container mb-4">
                     {dataDetail && (<>
-                        <h3 className="text-capitalize mb-4 text-lg">
+                        <h3 className="text-capitalize mb-2 text-lg">
                             {lng === 'en' ? (dataDetail.title.en || dataDetail.title.kr) : (dataDetail.title.kr || dataDetail.title.en)}
                         </h3>
                         <div>
@@ -192,7 +192,7 @@ const SubmitJobPage = () => {
                         </div>
                     </>)}
                     {dataDetail && (<>
-                        <h4 className="mt-5 mb-3">
+                        <h4 className="mt-3 mb-3">
                             {lng === 'en' ? 'JOB DESCRIPTION': '업무 설명서'}
                         </h4>
                         <p>
