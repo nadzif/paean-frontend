@@ -179,7 +179,7 @@ const SubmitJobPage = () => {
             <section className="contact-form-wrap section">
                 <div className="container mb-4">
                     {dataDetail && (<>
-                        <h3 className="text-capitalize mb-2 text-lg">
+                        <h3 className="text-uppercase mb-2 text-lg">
                             {lng === 'en' ? (dataDetail.title.en || dataDetail.title.kr) : (dataDetail.title.kr || dataDetail.title.en)}
                         </h3>
                         <div>
@@ -193,24 +193,24 @@ const SubmitJobPage = () => {
                     </>)}
                     {dataDetail && (<>
                         <h4 className="mt-3 mb-3">
-                            {lng === 'en' ? 'JOB DESCRIPTION': '업무 설명서'}
+                            {lng === 'en' ? 'Job Description': '업무 설명서'}
                         </h4>
                         <p>
                             {lng === 'en' ? (dataDetail.description.en || dataDetail.description.kr) : (dataDetail.description.kr || dataDetail.description.en)}
                         </p>
                         {/*---------------------------------------------------------------*/}
-                        <h4>{lng === 'en' ? 'QUALIFICATION' : '자격'}</h4>
+                        <h4>{lng === 'en' ? 'Qualifications' : '자격'}</h4>
                         <p>
                             {lng === 'en' ? (dataDetail.qualifications.en || dataDetail.qualifications.kr) : (dataDetail.qualifications.kr || dataDetail.qualifications.en)}
                         </p>
                         {/*---------------------------------------------------------------*/}
-                        <h4>{lng === 'en' ? 'APPLICATION DEADLINE' : '신청 마감'}</h4>
+                        <h4>{lng === 'en' ? 'Application Deadline' : '신청 마감'}</h4>
                         <p>{moment(dataDetail.applicationDeadline).format('LLL')}</p>
                     </>)}
                 </div>
                 <div className="container">
                     <div className=" mb-3">
-                        <h4>{lng === 'en' ? 'APPLY FOR JOB' : '구직 신청하다'}</h4>
+                        <h4>{lng === 'en' ? 'Apply for this Job' : '구직 신청하다'}</h4>
                     </div>
 
                     <form onSubmit={(event) => save(event)}>
