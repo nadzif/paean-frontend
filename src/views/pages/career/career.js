@@ -40,18 +40,15 @@ const CareerPage = () => {
                                             <h3>
                                                 <a href={`/career/${page}/${data.id}`}>
                                                     {lng === 'en' ? (data.title.en || data.title.kr) : (data.title.kr || data.title.en)}
-                                                    YPJ Support Services Coordinator
                                                 </a>
                                             </h3>
                                             <div>
                                                 <TfiLocationPin size={20} className="me-3"/>
                                                 {lng === 'en' ? (data.location.en || data.location.kr) : (data.location.kr || data.location.en)}
-                                                Tembagapura, Papua, Indonesia
                                             </div>
                                             <div>
                                                 <TfiBriefcase size={20} className="me-3"/>
                                                 {lng === 'en' ? (data.employment_type.en || data.employment_type.kr) : (data.employment_type.kr || data.employment_type.en)}
-                                                Kontraktor
                                             </div>
                                             <div>
                                                 {moment(data.applicationDeadline).format('LLL')}

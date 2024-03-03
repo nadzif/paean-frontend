@@ -44,17 +44,14 @@ const DetailJobPage = () => {
                         <>
                             <h1 className="text-capitalize mb-4 text-lg" style={{color: 'white'}}>
                                 {lng === 'en' ? (dataDetail.title.en || dataDetail.title.kr) : (dataDetail.title.kr || dataDetail.title.en)}
-                                YPJ Support Services Coordinator
                             </h1>
                             <div>
                                 <TfiLocationPin size={20} className="me-3"/>
                                 {lng === 'en' ? (dataDetail.location.en || dataDetail.location.kr) : (dataDetail.location.kr || dataDetail.location.en)}
-                                Tembagapura, Papua, Indonesia
                             </div>
                             <div>
                                 <TfiBriefcase size={20} className="me-3"/>
                                 {lng === 'en' ? (dataDetail.employment_type.en || dataDetail.employment_type.kr) : (dataDetail.employment_type.kr || dataDetail.employment_type.en)}
-                                Kontraktor
                             </div>
                         </>
                     )
@@ -71,7 +68,6 @@ const DetailJobPage = () => {
                                     {lng === 'en'
                                         ? ('About ' + dataDetail.title.en || '에 대한' + dataDetail.title.kr)
                                         : ('에 대한' + dataDetail.title.kr || 'About ' + dataDetail.title.en)}
-                                    YPJ Support Services Coordinator
                                 </h4>
                                 <p>
                                     {lng === 'en' ? (dataDetail.description.en || dataDetail.description.kr) : (dataDetail.description.kr || dataDetail.description.en)}
