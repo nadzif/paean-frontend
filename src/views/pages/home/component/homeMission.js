@@ -52,7 +52,7 @@ const HomeMissionComp = (props) => {
                                         } else if (data.key === "link") {
                                             return <>
                                                 <Link
-                                                    to={"/mission/" + d.id}
+                                                    to={"/science"}
                                                     className="btn btn-solid-border btn-round-full"
                                                 >
                                                     Read more &gt;&gt;
