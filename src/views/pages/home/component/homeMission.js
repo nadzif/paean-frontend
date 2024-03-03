@@ -33,10 +33,10 @@ const HomeMissionComp = (props) => {
                     </div>
 
                     <div className="row justify-content-center item-box">
-                        {dataProps.items.map(data => (
-                            <div key={data.sequence} className="col-lg-4 col-md-6 col-12 item">
+                        {dataProps.items.map(d => (
+                            <div key={d.sequence} className="col-lg-4 col-md-6 col-12 item">
                                 <div className="intro-item mb-5 mb-lg-0">
-                                    {data.properties.map(data => {
+                                    {d.properties.map(data => {
                                         if (data.key === "photo") {
                                             return <>
                                                 <img className="media-object img-fluid rounded"
@@ -52,7 +52,7 @@ const HomeMissionComp = (props) => {
                                         } else if (data.key === "link") {
                                             return <>
                                                 <Link
-                                                    to={"/science/" + data.id}
+                                                    to={"/mission/" + d.id}
                                                     className="btn btn-solid-border btn-round-full"
                                                 >
                                                     Read more &gt;&gt;

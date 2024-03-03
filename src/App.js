@@ -17,6 +17,7 @@ import CareerPage from "./views/pages/career/career";
 import DetailJobPage from "./views/pages/career/form/detailJob";
 import SubmitJobPage from "./views/pages/career/form/submitJob";
 import ContentPage from "./views/pages/news/newsContent";
+import MissionPageDetail from "./views/pages/mission/mission";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<NavbarComp/>}>
                         <Route index element={<HomePage/>}/>
+                        <Route path="/mission/:id?" element={<MissionPageDetail/>}/>
                         <Route path="/science/:title?" element={<SciencePage/>}/>
                         <Route path="/news/:id?" element={<NewsPage/>}/>
                         <Route path="/blog/:id?" element={<NewsPage/>}/>

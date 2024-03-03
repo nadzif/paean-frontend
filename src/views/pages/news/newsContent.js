@@ -57,14 +57,14 @@ const ContentPage = () => {
     }, [blog, id]);
 
     return (<>
-        <div style={{paddingBottom: "20%"}}>
-            <img src={BgHeader} alt="" id="background-header"/>
+        <div >
+            {/*<img src={BgHeader} alt="" id="background-header"/>*/}
             <div id="background-header" className="opacityBg"/>
             <h1 className="text-center centerHeader text-capitalize mb-4 text-lg">
                 {type} Content
             </h1>
         </div>
-        <div className="mainPage">
+        <div className="contentPage">
             <section className="section blog-wrap bg-gray">
                 <div className="container">
                     <div className="row">

@@ -45,6 +45,15 @@
     font-size: 17px;
 }
 
+.contentPage {
+    background-color: white;
+    /*margin-top: 20vh;*/
+    position: relative;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+}
+
 .linkText {
     background-color: transparent;
     text-decoration: none;
