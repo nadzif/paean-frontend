@@ -96,7 +96,7 @@ const NewsPage = () => {
                 style={{backgroundImage: `url(http://www.paeanbio.com/themes/main/assets/images/homepage/cells.png)`}}
             >
                 <div className="container">
-                    <h2 className="content-title">News Release</h2>
+                    <h2 className="content-title">News</h2>
                     <div className="row">
                         {news.data !== undefined ? news.data.map(data => {
                             return (<div
