@@ -6,6 +6,7 @@ import {useLanguage} from "../../../components/utils/LanguageProvider";
 import {useParams} from "react-router-dom";
 import {getJob} from "../../../../application/selectors/ui";
 import axios from "axios";
+import moment from "moment/moment";
 
 const SubmitJobPage = () => {
     const {lng} = useLanguage();
@@ -29,6 +30,8 @@ const SubmitJobPage = () => {
     });
     const [totalSize, setTotalSize] = useState(0);
     const [dataDetail, setDataDetail] = useState(null);
+
+    const validation = (fieldData.full_name !== '' && fieldData.email !== '' && fieldData.phone !== '' && fieldData.address !== '' && fieldData.resume !== null && fieldData.degree_certificate !== null && fieldData.other_certificate !== null)
 
     const detail = () => {
         if (job && job.data) {
@@ -104,9 +107,6 @@ const SubmitJobPage = () => {
             }
         });
 
-        // console.log(fieldData)
-        // console.log(formData)
-
         try {
 
             const response = await axios.post('http://paean-api.live-version.com/api/applicant', formData, {
@@ -150,6 +150,33 @@ const SubmitJobPage = () => {
         </div>
         <div className="mainPage">
             <section className="contact-form-wrap section">
+                <div className="container mb-4">
+                    {
+                        dataDetail && (
+                            <>
+                                <h4 className="mb-5">
+                                    {lng === 'en'
+                                        ? ('About ' + dataDetail.title.en || '에 대한' + dataDetail.title.kr)
+                                        : ('에 대한' + dataDetail.title.kr || 'About ' + dataDetail.title.en)}
+                                </h4>
+                                <p>
+                                    {lng === 'en' ? (dataDetail.description.en || dataDetail.description.kr) : (dataDetail.description.kr || dataDetail.description.en)}
+                                </p>
+                                {/*---------------------------------------------------------------*/}
+                                <br/>
+                                <h4><strong>{lng === 'en' ? 'MINIMUM REQUIREMENTS' : '최소 요건'}</strong></h4>
+                                <br/>
+                                <p>
+                                    {lng === 'en' ? (dataDetail.qualifications.en || dataDetail.qualifications.kr) : (dataDetail.qualifications.kr || dataDetail.qualifications.en)}
+                                </p>
+                                <br/>
+                                {/*---------------------------------------------------------------*/}
+                                <h4><strong>{lng === 'en' ? 'APPLICATION DEADLINE' : '신청 마감'}</strong></h4>
+                                <p>{moment(dataDetail.applicationDeadline).format('LLL')}</p>
+                            </>
+                        )
+                    }
+                </div>
                 <div className="container">
                     <form onSubmit={(event) => save(event)}>
 
@@ -311,7 +338,8 @@ const SubmitJobPage = () => {
 
                         <div>
                             <button
-                                className="btn btn-medium btn-main btn-round-full mt-3"
+                                // className="btn btn-medium btn-main btn-round-full mt-3"
+                                className={`btn btn-medium btn-main btn-round-full mt-3 ${validation ? '' : 'disabled'}`}
                                 type="submit"
                             >
                                 {lng === 'en' ? 'Apply' : '적용하다'}
