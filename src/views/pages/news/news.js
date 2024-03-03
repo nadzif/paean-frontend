@@ -17,19 +17,15 @@ const NewsPage = () => {
     const blog = useSelector(getBlog);
     const [pageNews, setPageNews] = useState(1);
     const [pageBlog, setPageBlog] = useState(1);
+    const [newsComp, setNewsComp] = useState();
+    const [title, stTitle] = useState();
+    const [subtitle, setSubtitle] = useState();
+    const [background, setBackground] = useState();
 
     const removeHtmlTags = (htmlString) => {
         const doc = new DOMParser().parseFromString(htmlString, 'text/html');
         return doc.body.textContent || "";
     };
-
-    useEffect(() => {
-        dispatch(newsLoaded(pageNews));
-    }, [dispatch, pageNews]);
-
-    useEffect(() => {
-        dispatch(blogLoaded(pageBlog));
-    }, [dispatch, pageBlog]);
 
     const handlePaginationNews = (pageNumber) => {
         setPageNews(pageNumber);
@@ -39,12 +35,58 @@ const NewsPage = () => {
         setPageBlog(pageNumber);
     };
 
+    const getNewsComp = async () => {
+        await axios.get('/page/news')
+            .then((response) => {
+                setNewsComp(response.data)
+            })
+            .catch((error) => {
+                console.log('Failed' + error)
+            })
+
+    }
+
+    let hero;
+    // let title, subtitle, background;
+
+    newsComp && newsComp.sections.map(data => {
+        if (data.name === "hero") {
+            hero = data;
+        }
+    });
+
+
+    useEffect(() => {
+        dispatch(newsLoaded(pageNews));
+        getNewsComp()
+    }, [dispatch, pageNews]);
+
+    useEffect(() => {
+        dispatch(blogLoaded(pageBlog));
+    }, [dispatch, pageBlog]);
+
+    useEffect(() => {
+        if (hero) {
+            for (const i of hero.properties) {
+                const valueEn = i.value.en;
+                const valueKr = i.value.kr;
+                if (i.key === "title") {
+                    stTitle(lng === 'en' ? (valueEn || valueKr) : (valueKr || valueEn))
+                } else if (i.key === "subtitle") {
+                    setSubtitle(lng === 'en' ? (valueEn || valueKr) : (valueKr || valueEn))
+                } else if ("background-image") {
+                    setBackground(lng === 'en' ? (valueEn || valueKr) : (valueKr || valueEn))
+                }
+            }
+        }
+    }, [hero, lng]);
+
     return (<>
         <div style={{paddingBottom: "20%"}}>
-            <img src={BgHeader} alt="" id="background-header"/>
+            <img src={background} alt="" id="background-header"/>
             <div id="background-header" className="opacityBg"/>
             <h1 className="text-center centerHeader text-capitalize mb-4 text-lg">
-                News Release & Event
+                {title}
             </h1>
         </div>
         <div className="mainPage">

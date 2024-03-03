@@ -95,7 +95,7 @@ const DetailJobPage = () => {
                     <div className="justify-content-center mt-5">
                         {dataDetail && (
                             <>
-                                {moment().format('LLL') >= moment(dataDetail.applicationDeadline).format('LLL') &&
+                                {moment().format('LLL') <= moment(dataDetail.applicationDeadline).format('LLL') &&
                                 dataDetail.is_active === true
                                     ? <Link
                                         to={`/career/${page}/${dataDetail.id}/apply`}

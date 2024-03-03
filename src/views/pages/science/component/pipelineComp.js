@@ -53,7 +53,7 @@ const ProgressBarTable = () => {
                             <tr>
                                 {index === 0 ? (<td rowSpan={i.progresses.length}>{i.name}</td>) : (<></>)}
                                 <td>
-                                    {e.pipeline}
+                                    {e.name}
                                 </td>
                                 <td>
                                     {e.indication}

@@ -108,10 +108,6 @@ const SubmitJobPage = () => {
         // console.log(formData)
 
         try {
-            // const response = await fetch('http://paean-api.live-version.com/applicant', {
-            //     method: 'POST',
-            //     body: formData,
-            // });
 
             const response = await axios.post('http://paean-api.live-version.com/api/applicant', formData, {
                 headers: {
@@ -314,7 +310,10 @@ const SubmitJobPage = () => {
                         <progress max={15 * 1024 * 1024} value={totalSize} className="w-100"></progress>
 
                         <div>
-                            <button className="btn btn-medium btn-main btn-round-full mt-3" type="submit">
+                            <button
+                                className="btn btn-medium btn-main btn-round-full mt-3"
+                                type="submit"
+                            >
                                 {lng === 'en' ? 'Apply' : '적용하다'}
                             </button>
                         </div>

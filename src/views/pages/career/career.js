@@ -70,7 +70,7 @@ const CareerPage = () => {
                                                     </Link>
                                                     :
                                                     <Link
-                                                        to={`/career/${page}/${data.id}`}
+                                                        to={`/career/${page}/${data.id}/apply`}
                                                         className="btn btn-medium btn-main btn-round-full"
                                                     >
                                                         Apply

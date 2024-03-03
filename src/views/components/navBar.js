@@ -73,7 +73,7 @@ const NavbarComp = () => {
                                     to="/"
                                     className="buttonSizeNav"
                                     style={{
-                                        color: onTopPage ? (activeItem === 'home' ? 'rgba(50, 250, 148, 0.8)' : 'white') : (activeItem === 'home' ? 'rgba(50, 250, 148, 0.8)' : 'black'),
+                                        color: onTopPage ? (activeItem === 'home' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'home' ? 'rgba(0, 176, 80, 0.8)' : 'black'),
                                     }}
                                     onClick={() => {
                                         setActiveItem('home');
@@ -87,7 +87,7 @@ const NavbarComp = () => {
                                     to="/science"
                                     className="buttonSizeNav"
                                     style={{
-                                        color: onTopPage ? (activeItem === 'science' ? 'rgba(50, 250, 148, 0.8)' : 'white') : (activeItem === 'science' ? 'rgba(50, 250, 148, 0.8)' : 'black')
+                                        color: onTopPage ? (activeItem === 'science' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'science' ? 'rgba(0, 176, 80, 0.8)' : 'black')
                                     }}
                                     onClick={() => {
                                         setActiveItem('science');
@@ -103,7 +103,7 @@ const NavbarComp = () => {
                                     to="/aboutus"
                                     className="buttonSizeNav"
                                     style={{
-                                        color: onTopPage ? (activeItem === 'aboutUs' ? 'rgba(50, 250, 148, 0.8)' : 'white') : (activeItem === 'aboutUs' ? 'rgba(50, 250, 148, 0.8)' : 'black')
+                                        color: onTopPage ? (activeItem === 'aboutUs' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'aboutUs' ? 'rgba(0, 176, 80, 0.8)' : 'black')
                                     }}
                                     onClick={() => {
                                         setActiveItem('aboutUs');
@@ -119,7 +119,7 @@ const NavbarComp = () => {
                                     to="/news"
                                     className="buttonSizeNav"
                                     style={{
-                                        color: onTopPage ? (activeItem === 'news' ? 'rgba(50, 250, 148, 0.8)' : 'white') : (activeItem === 'news' ? 'rgba(50, 250, 148, 0.8)' : 'black')
+                                        color: onTopPage ? (activeItem === 'news' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'news' ? 'rgba(0, 176, 80, 0.8)' : 'black')
                                     }}
                                     onClick={() => {
                                         setActiveItem('news');
@@ -136,7 +136,7 @@ const NavbarComp = () => {
                                     to="/career"
                                     className="buttonSizeNav"
                                     style={{
-                                        color: onTopPage ? (activeItem === 'career' ? 'rgba(50, 250, 148, 0.8)' : 'white') : (activeItem === 'career' ? 'rgba(50, 250, 148, 0.8)' : 'black')
+                                        color: onTopPage ? (activeItem === 'career' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'career' ? 'rgba(0, 176, 80, 0.8)' : 'black')
                                     }}
                                     onClick={() => {
                                         setActiveItem('career');
@@ -152,7 +152,7 @@ const NavbarComp = () => {
                                     to="/contactus"
                                     className="buttonSizeNav"
                                     style={{
-                                        color: onTopPage ? (activeItem === 'contactUs' ? 'rgba(50, 250, 148, 0.8)' : 'white') : (activeItem === 'contactUs' ? 'rgba(50, 250, 148, 0.8)' : 'black')
+                                        color: onTopPage ? (activeItem === 'contactUs' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'contactUs' ? 'rgba(0, 176, 80, 0.8)' : 'black')
                                     }}
                                     onClick={() => {
                                         setActiveItem('contactUs');
