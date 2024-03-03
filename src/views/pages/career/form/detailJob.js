@@ -65,16 +65,14 @@ const DetailJobPage = () => {
                         dataDetail && (
                             <>
                                 <h4 className="mb-5">
-                                    {lng === 'en'
-                                        ? ('About ' + dataDetail.title.en || '에 대한' + dataDetail.title.kr)
-                                        : ('에 대한' + dataDetail.title.kr || 'About ' + dataDetail.title.en)}
+                                    {lng === 'en' ? 'JOB DESCRIPTION': '업무 설명서'}
                                 </h4>
                                 <p>
                                     {lng === 'en' ? (dataDetail.description.en || dataDetail.description.kr) : (dataDetail.description.kr || dataDetail.description.en)}
                                 </p>
                                 {/*---------------------------------------------------------------*/}
                                 <br/>
-                                <h4><strong>{lng === 'en' ? 'MINIMUM REQUIREMENTS' : '최소 요건'}</strong></h4>
+                                <h4><strong>{lng === 'en' ? 'QUALIFICATION' : '자격'}</strong></h4>
                                 <br/>
                                 <p>
                                     {lng === 'en' ? (dataDetail.qualifications.en || dataDetail.qualifications.kr) : (dataDetail.qualifications.kr || dataDetail.qualifications.en)}

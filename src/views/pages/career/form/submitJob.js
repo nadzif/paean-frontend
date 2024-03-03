@@ -193,24 +193,24 @@ const SubmitJobPage = () => {
                     </>)}
                     {dataDetail && (<>
                         <h4 className="mt-5 mb-3">
-                            {lng === 'en' ? ('About ' + dataDetail.title.en || '에 대한' + dataDetail.title.kr) : ('에 대한' + dataDetail.title.kr || 'About ' + dataDetail.title.en)}
+                            {lng === 'en' ? 'JOB DESCRIPTION': '업무 설명서'}
                         </h4>
                         <p>
                             {lng === 'en' ? (dataDetail.description.en || dataDetail.description.kr) : (dataDetail.description.kr || dataDetail.description.en)}
                         </p>
                         {/*---------------------------------------------------------------*/}
-                        <h4><strong>{lng === 'en' ? 'MINIMUM REQUIREMENTS' : '최소 요건'}</strong></h4>
+                        <h4>{lng === 'en' ? 'QUALIFICATION' : '자격'}</h4>
                         <p>
                             {lng === 'en' ? (dataDetail.qualifications.en || dataDetail.qualifications.kr) : (dataDetail.qualifications.kr || dataDetail.qualifications.en)}
                         </p>
                         {/*---------------------------------------------------------------*/}
-                        <h4><strong>{lng === 'en' ? 'APPLICATION DEADLINE' : '신청 마감'}</strong></h4>
+                        <h4>{lng === 'en' ? 'APPLICATION DEADLINE' : '신청 마감'}</h4>
                         <p>{moment(dataDetail.applicationDeadline).format('LLL')}</p>
                     </>)}
                 </div>
                 <div className="container">
                     <div className=" mb-3">
-                        <h4><strong>{lng === 'en' ? 'APPLY FOR JOB' : '구직 신청하다'}</strong></h4>
+                        <h4>{lng === 'en' ? 'APPLY FOR JOB' : '구직 신청하다'}</h4>
                     </div>
 
                     <form onSubmit={(event) => save(event)}>
