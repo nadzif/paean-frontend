@@ -8,7 +8,7 @@ const AboutListPeopleComp = (data) => {
   }
   for (const i of data.data.properties) {
     if (i.key === "title") {
-      title = data.lng === 'kr' ? i.value.kr : i.value.en
+      title = data.lng === 'kr' ? (i.value.kr || i.value.en) : (i.value.en || i.value.kr)
     }
   }
   return (

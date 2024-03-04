@@ -6,7 +6,7 @@ const HomeMilestoneComp = (props) => {
     let title = '';
     for (const i of dataProps.properties) {
         if (i.key === "title") {
-            title = props.lng === 'kr' ? i.value.kr : i.value.en
+            title = props.lng === 'kr' ? (i.value.kr || i.value.en) : (i.value.en || i.value.kr)
         }
     }
     return (
@@ -24,24 +24,24 @@ const HomeMilestoneComp = (props) => {
                                     {data.properties.map(data => {
                                         if (data.key === "name") {
                                             return <>
-                                                <h3>{props.lng === 'kr' ? data.value.kr : data.value.en}</h3>
+                                                <h3>{props.lng === 'kr' ? (data.value.kr || data.value.en) : (data.value.en || data.value.kr)}</h3>
                                             </>;
                                         } else if (data.key === "description") {
                                             return <>
                                                 <div className="description">
-                                                    {parse(`${props.lng === 'kr' ? data.value.kr : data.value.en}`)}
+                                                    {parse(`${props.lng === 'kr' ? (data.value.kr || data.value.en) : (data.value.en || data.value.kr)}`)}
                                                 </div>
                                             </>;
                                         } else if (data.key === "content") {
                                             return <>
                                                 <div className="description pt-lg-5">
-                                                    {parse(`${props.lng === 'kr' ? data.value.kr : data.value.en}`)}
+                                                    {parse(`${props.lng === 'kr' ? (data.value.kr || data.value.en) : (data.value.en || data.value.kr)}`)}
                                                 </div>
                                             </>;
                                         } else if (data.key === "date") {
                                             return <>
                                                 <span
-                                                    className="date">{props.lng === 'kr' ? data.value.kr : data.value.en}</span>
+                                                    className="date">{props.lng === 'kr' ? (data.value.kr || data.value.en) : (data.value.en || data.value.kr)}</span>
                                             </>;
                                         }
 
