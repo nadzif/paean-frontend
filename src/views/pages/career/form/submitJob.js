@@ -7,8 +7,10 @@ import {useNavigate, useParams} from "react-router-dom";
 import {getJob} from "../../../../application/selectors/ui";
 import axios from "axios";
 import moment from "moment/moment";
+import {useTranslation} from "react-i18next";
 
 const SubmitJobPage = () => {
+    const {t} = useTranslation();
     const {lng} = useLanguage();
     const {id, page} = useParams();
     const job = useSelector(getJob);
@@ -193,7 +195,8 @@ const SubmitJobPage = () => {
                     </>)}
                     {dataDetail && (<>
                         <h4 className="mt-5 mb-3">
-                            {lng === 'en' ? ('About ' + dataDetail.title.en || '에 대한' + dataDetail.title.kr) : ('에 대한' + dataDetail.title.kr || 'About ' + dataDetail.title.en)}
+                            {t('about')}
+                            {lng === 'en' ? (' ' + dataDetail.title.en || ' ' + dataDetail.title.kr) : (' ' + dataDetail.title.kr || ' ' + dataDetail.title.en)}
                         </h4>
                         <p>
                             {lng === 'en' ? (dataDetail.description.en || dataDetail.description.kr) : (dataDetail.description.kr || dataDetail.description.en)}
@@ -215,88 +218,88 @@ const SubmitJobPage = () => {
 
                     <form onSubmit={(event) => save(event)}>
                         <div className="form-group">
-                            <div>{lng === 'en' ? 'Name' : '이름'}</div>
+                            <div>{t('name')}</div>
                             <input
                                 id="megakitname"
                                 name="full_name"
                                 type="text"
                                 className="form-control"
-                                placeholder={lng === 'en' ? 'Name' : '이름'}
+                                placeholder={t('name')}
                                 required
                                 value={fieldData.full_name}
                                 onChange={(e) => setFieldData({...fieldData, full_name: e.target.value})}
                             />
                         </div>
                         <div className="form-group">
-                            <div>{lng === 'en' ? 'Phone Number' : '전화 번호'}</div>
+                            <div>{t('phone number')}</div>
                             <input
                                 id="megakitphone"
                                 name="phone"
                                 type="tel"
                                 className="form-control"
-                                placeholder={lng === 'en' ? 'Phone Number' : '전화 번호'}
+                                placeholder={t('phone number')}
                                 required
                                 value={fieldData.phone}
                                 onChange={(e) => setFieldData({...fieldData, phone: e.target.value})}
                             />
                         </div>
                         <div className="form-group">
-                            <div>{lng === 'en' ? 'Email' : '이메일'}</div>
+                            <div>{t('email')}</div>
                             <input
                                 id="megakitemail"
                                 name="email"
                                 type="email"
                                 className="form-control"
-                                placeholder={lng === 'en' ? 'Email' : '이메일'}
+                                placeholder={t('email')}
                                 required
                                 value={fieldData.email}
                                 onChange={(e) => setFieldData({...fieldData, email: e.target.value})}
                             />
                         </div>
                         <div className="form-group">
-                            <div>{lng === 'en' ? 'Address' : '주소'}</div>
+                            <div>{t('address')}</div>
                             <input
                                 id="megakitaddress"
                                 name="address"
                                 type="text"
                                 className="form-control"
-                                placeholder={lng === 'en' ? 'Address' : '주소'}
+                                placeholder={t('address')}
                                 required
                                 value={fieldData.address}
                                 onChange={(e) => setFieldData({...fieldData, address: e.target.value})}
                             />
                         </div>
                         <div className="form-group">
-                            <div>{lng === 'en' ? 'References' : '참고자료'}</div>
+                            <div>{t('references')}</div>
                             <textarea
                                 id="megakitreferences"
                                 name="references"
                                 className="form-control"
-                                placeholder={lng === 'en' ? 'References' : '참고자료'}
+                                placeholder={t('references')}
                                 value={fieldData.references}
                                 onChange={(e) => setFieldData({...fieldData, references: e.target.value})}
                             />
                         </div>
                         <div style={{paddingBottom: '15px'}}>
-                            <div>{lng === 'en' ? 'Curriculum Vitae' : '이력서'}</div>
+                            <div>{t('curriculum vitae')}</div>
                             <input
                                 id="megakitcv"
                                 name="resume"
                                 type="file"
                                 className="form-control"
-                                placeholder={lng === 'en' ? 'Curriculum Vitae' : '이력서'}
+                                placeholder={t('curriculum vitae')}
                                 multiple
                                 onChange={(e) => handleFileChange('resume', e.target.files)}
                             />
                         </div>
                         <div style={{paddingBottom: '15px'}}>
-                            <div>{lng === 'en' ? 'Degree Certificate' : '학위 증명서'}</div>
+                            <div>{t('degree certificate')}</div>
                             <input
                                 id="megakitbachelor"
                                 name="degree_certificate"
                                 type="file"
                                 className="form-control"
-                                placeholder={lng === 'en' ? 'Degree Certificate' : '학위 증명서'}
+                                placeholder={t('degree certificate')}
                                 multiple
                                 onChange={(e) => handleFileChange('degree_certificate', e.target.files)}
                             />
@@ -306,9 +309,9 @@ const SubmitJobPage = () => {
                                 <thead>
                                 <tr>
                                     <th scope="col" style={{width: '5%'}}>#</th>
-                                    <th scope="col">{lng === 'en' ? 'NAME' : '이름'}</th>
-                                    <th scope="col" style={{width: '10%'}}>{lng === 'en' ? 'SIZE' : '크기'}</th>
-                                    <th scope="col" style={{width: '7%'}}>{lng === 'en' ? 'ACTION' : '행동'}</th>
+                                    <th scope="col">{t('name')}</th>
+                                    <th scope="col" style={{width: '10%'}}>{t('size')}</th>
+                                    <th scope="col" style={{width: '7%'}}>{t('action')}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -321,7 +324,7 @@ const SubmitJobPage = () => {
                                             onClick={() => removeFile('degree_certificate', index)}
                                             className="ms-3"
                                         >
-                                            {lng === 'en' ? 'Remove' : '제거하다'}
+                                            {t('remove')}
                                         </button>
                                     </td>
                                 </tr>))}
@@ -335,7 +338,7 @@ const SubmitJobPage = () => {
                                 name="other_certificate"
                                 type="file"
                                 className="form-control"
-                                placeholder="Other Certificates"
+                                placeholder={t('other certificates')}
                                 multiple
                                 onChange={(e) => handleFileChange('other_certificate', e.target.files)}
                             />
@@ -346,9 +349,9 @@ const SubmitJobPage = () => {
                                 <thead>
                                 <tr>
                                     <th scope="col" style={{width: '5%'}}>#</th>
-                                    <th scope="col">{lng === 'en' ? 'NAME' : '이름'}</th>
-                                    <th scope="col" style={{width: '10%'}}>{lng === 'en' ? 'SIZE' : '크기'}</th>
-                                    <th scope="col" style={{width: '7%'}}>{lng === 'en' ? 'ACTION' : '행동'}</th>
+                                    <th scope="col">{t('name')}</th>
+                                    <th scope="col" style={{width: '10%'}}>{t('size')}</th>
+                                    <th scope="col" style={{width: '7%'}}>{t('action')}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -361,7 +364,7 @@ const SubmitJobPage = () => {
                                             onClick={() => removeFile('other_certificate', index)}
                                             className="ms-3"
                                         >
-                                            {lng === 'en' ? 'Remove' : '제거하다'}
+                                            {t('remove')}
                                         </button>
                                     </td>
                                 </tr>))}
@@ -371,10 +374,10 @@ const SubmitJobPage = () => {
                         {(selectedFiles.resume || selectedFiles.degree_certificate || selectedFiles.other_certificate) && (
                             <div className="text-center">
                                 <h4>
-                                    {lng === 'en' ? 'Total File Size' : '총 파일 크기'}
+                                    {t('total file size')}
                                     <span
                                         className="badge bg-secondary ms-1 me-1">{(totalSize / 1000000).toFixed(2)} MB</span>
-                                    {lng === 'en' ? 'Max File Size' : '최대 파일 크기'}
+                                    {t('max file size')}
                                     <span className="badge bg-danger ms-1 me-1">15 MB</span>
                                 </h4>
                             </div>)}
@@ -398,7 +401,7 @@ const SubmitJobPage = () => {
                                         type="submit"
                                     >
 
-                                        {lng === 'en' ? 'Send Application' : '신청서 보내기'}
+                                        {t('send application')}
                                     </button>
                             }
                         </div>

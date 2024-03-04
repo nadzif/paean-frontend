@@ -8,12 +8,14 @@ import LogoWhite from "../../assets/media/images/logo/logo-white.png";
 import {useEffect, useState} from "react";
 import {Link, Outlet, useLocation} from "react-router-dom";
 import FooterComp from "./footer";
-import {NavDropdown} from "react-bootstrap";
+import {ButtonGroup, NavDropdown} from "react-bootstrap";
 import Usa from "../../assets/media/images/flag/usa.png";
 import Korea from "../../assets/media/images/flag/korea.png";
 import {LanguageProvider} from "./utils/LanguageProvider";
+import {useTranslation} from "react-i18next";
 
 const NavbarComp = () => {
+    const {t} = useTranslation();
     const location = useLocation();
     const [onTopPage, setOnTopPage] = useState(true);
     const [language, setLanguage] = useState(localStorage.getItem("lng"));
@@ -67,7 +69,54 @@ const NavbarComp = () => {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="justify-content-end flex-grow-1 pe-3">
+                        <Nav  className="justify-content-end flex-grow-1 pe-3">
+                            {/*<NavDropdown*/}
+                            {/*    title={language}*/}
+                            {/*    id="basic-nav-dropdown"*/}
+                            {/*    className="buttonSizeNav"*/}
+                            {/*    style={{color: onTopPage ? "white" : "black"}}*/}
+                            {/*>*/}
+                            {/*    <NavDropdown.Item onClick={() => handleLanguage('en')}>*/}
+                            {/*        <img src={Usa} alt="en" width="30" height="30"/>*/}
+                            {/*        <span className="dropdown-text ms-2">ENGLISH</span>*/}
+                            {/*    </NavDropdown.Item>*/}
+                            {/*    <NavDropdown.Item onClick={() => handleLanguage('kr')}>*/}
+                            {/*        <img src={Korea} alt="kr" width="30" height="30"/>*/}
+                            {/*        <span className="dropdown-text ms-2">KOREA</span>*/}
+                            {/*    </NavDropdown.Item>*/}
+                            {/*</NavDropdown>*/}
+                            <Nav.Link>
+                                <Link
+                                    to="#"
+                                    className="buttonSizeNav"
+                                    style={{
+                                        color: onTopPage ? (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'black'),
+                                    }}
+                                    onClick={() => handleLanguage('kr')}
+                                >
+                                    kr
+                                </Link>
+                                <Link
+                                    to="#"
+                                    className="buttonSizeNav"
+                                    style={{
+                                        color: onTopPage ? 'white' : 'black', margin: '0 5px'
+                                    }}
+                                    onClick={() => handleLanguage('kr')}
+                                >
+                                    |
+                                </Link>
+                                <Link
+                                    to="#"
+                                    className="buttonSizeNav me-2"
+                                    style={{
+                                        color: onTopPage ? (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'black'),
+                                    }}
+                                    onClick={() => handleLanguage('en')}
+                                >
+                                    en
+                                </Link>
+                            </Nav.Link>
                             <Nav.Link>
                                 <Link
                                     to="/"
@@ -79,7 +128,7 @@ const NavbarComp = () => {
                                         setActiveItem('home');
                                     }}
                                 >
-                                    {language === 'en' ? 'HOME' : language === 'kr' ? '집' : ''}
+                                    {t('home')}
                                 </Link>
                             </Nav.Link>
                             <Nav.Link>
@@ -93,9 +142,7 @@ const NavbarComp = () => {
                                         setActiveItem('science');
                                     }}
                                 >
-                                    {
-                                        language === 'en' ? 'SCIENCE' : language === 'kr' ? '과학' : ''
-                                    }
+                                    {t('science')}
                                 </Link>
                             </Nav.Link>
                             <Nav.Link>
@@ -109,9 +156,7 @@ const NavbarComp = () => {
                                         setActiveItem('aboutUs');
                                     }}
                                 >
-                                    {
-                                        language === 'en' ? 'ABOUT US' : language === 'kr' ? '회사 소개' : ''
-                                    }
+                                    {t('about us')}
                                 </Link>
                             </Nav.Link>
                             <Nav.Link>
@@ -125,10 +170,7 @@ const NavbarComp = () => {
                                         setActiveItem('news');
                                     }}
                                 >
-                                    {
-                                        language === 'en' ? 'NEWS' : language === 'kr' ? '소식' : ''
-                                    }
-
+                                    {t('news')}
                                 </Link>
                             </Nav.Link>
                             <Nav.Link>
@@ -142,9 +184,7 @@ const NavbarComp = () => {
                                         setActiveItem('career');
                                     }}
                                 >
-                                    {
-                                        language === 'en' ? 'CAREER' : language === 'kr' ? '직업' : ''
-                                    }
+                                    {t('career')}
                                 </Link>
                             </Nav.Link>
                             <Nav.Link>
@@ -158,36 +198,10 @@ const NavbarComp = () => {
                                         setActiveItem('contactUs');
                                     }}
                                 >
-                                    {
-                                        language === 'en' ? 'CONTACT US' : language === 'kr' ? '문의하기' : ''
-                                    }
+                                    {t('contact us')}
 
                                 </Link>
                             </Nav.Link>
-
-                            <NavDropdown
-                                title={
-                                    <Image
-                                        className="flag-img"
-                                        src={language === 'en' ? Usa : Korea}
-                                        alt={language}
-                                        roundedCircle
-                                        width="35" height="30"
-                                    />
-                                }
-                                id="basic-nav-dropdown"
-                                className="dropstart"
-                                style={{color: onTopPage ? "white" : "black"}}
-                            >
-                                <NavDropdown.Item onClick={() => handleLanguage('en')}>
-                                    <img src={Usa} alt="en" width="30" height="30"/>
-                                    <span className="dropdown-text ms-2">ENGLISH</span>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item onClick={() => handleLanguage('kr')}>
-                                    <img src={Korea} alt="kr" width="30" height="30"/>
-                                    <span className="dropdown-text ms-2">KOREA</span>
-                                </NavDropdown.Item>
-                            </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
