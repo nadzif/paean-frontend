@@ -18,32 +18,36 @@ import DetailJobPage from "./views/pages/career/form/detailJob";
 import SubmitJobPage from "./views/pages/career/form/submitJob";
 import ContentPage from "./views/pages/news/newsContent";
 import MissionPageDetail from "./views/pages/mission/mission";
+import {I18nextProvider} from "react-i18next";
+import i18n from './i18n';
 
 function App() {
     return (
-        <SkeletonTheme baseColor="#c1bbbb" highlightColor="#857e7e">
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<NavbarComp/>}>
-                        <Route index element={<HomePage/>}/>
-                        <Route path="/mission/:id?" element={<MissionPageDetail/>}/>
-                        <Route path="/science/:title?" element={<SciencePage/>}/>
-                        <Route path="/news/:id?" element={<NewsPage/>}/>
-                        <Route path="/blog/:id?" element={<NewsPage/>}/>
-                        <Route path="/contactus" element={<ContactUSPage/>}/>
-                        <Route path="/aboutus" element={<AboutUSPage/>}/>
-                        <Route path="/content/:type/:page/:id" element={<ContentPage/>}/>
-                        {/*<Route path="/blogcontent/:id" element={<NewsContentPage/>}/>*/}
-                        <Route path="/privacy-statement" element={<PrivacyStatementPage/>}/>
-                        <Route path="/cookie-policy" element={<CookiePolicyPage/>}/>
-                        <Route path="/career" element={<CareerPage/>}/>
-                        <Route path="/career/:page/:id?" element={<DetailJobPage/>}/>
-                        <Route path="/career/:page/:id?/apply" element={<SubmitJobPage/>}/>
-                        <Route path="*" element={<NoPage/>}/>
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </SkeletonTheme>
+        <I18nextProvider i18n={i18n}>
+            <SkeletonTheme baseColor="#c1bbbb" highlightColor="#857e7e">
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<NavbarComp/>}>
+                            <Route index element={<HomePage/>}/>
+                            <Route path="/mission/:id?" element={<MissionPageDetail/>}/>
+                            <Route path="/science/:title?" element={<SciencePage/>}/>
+                            <Route path="/news/:id?" element={<NewsPage/>}/>
+                            <Route path="/blog/:id?" element={<NewsPage/>}/>
+                            <Route path="/contactus" element={<ContactUSPage/>}/>
+                            <Route path="/aboutus" element={<AboutUSPage/>}/>
+                            <Route path="/content/:type/:page/:id" element={<ContentPage/>}/>
+                            {/*<Route path="/blogcontent/:id" element={<NewsContentPage/>}/>*/}
+                            <Route path="/privacy-statement" element={<PrivacyStatementPage/>}/>
+                            <Route path="/cookie-policy" element={<CookiePolicyPage/>}/>
+                            <Route path="/career" element={<CareerPage/>}/>
+                            <Route path="/career/:page/:id?" element={<DetailJobPage/>}/>
+                            <Route path="/career/:page/:id?/apply" element={<SubmitJobPage/>}/>
+                            <Route path="*" element={<NoPage/>}/>
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+            </SkeletonTheme>
+        </I18nextProvider>
     );
 }
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import Modal from 'react-bootstrap/Modal';
 import parse from 'html-react-parser'
 
@@ -8,16 +8,16 @@ const AboutUsProfileComp = (props) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     let image, name, position, desc = '';
-    
+
     props.data.properties.forEach(data => {
         if (data.key === "name") {
-            name = lng === 'kr' ? data.value.kr : data.value.en;
+            name = lng === 'kr' ? (data.value.kr || data.value.en) : (data.value.en || data.value.kr);
         } else if (data.key === "description") {
-            desc = lng === 'kr' ? data.value.kr : data.value.en;
+            desc = lng === 'kr' ? (data.value.kr || data.value.en) : (data.value.en || data.value.kr);
         } else if (data.key === "photo") {
-            image = lng === 'kr' ? data.value.kr : data.value.en;
+            image = lng === 'kr' ? (data.value.kr || data.value.en) : (data.value.en || data.value.kr);
         } else if (data.key === "position") {
-            position = lng === 'kr' ? data.value.kr : data.value.en;
+            position = lng === 'kr' ? (data.value.kr || data.value.en) : (data.value.en || data.value.kr);
         }
     })
     return (
@@ -33,7 +33,7 @@ const AboutUsProfileComp = (props) => {
                             src={`${image}`}
                             alt=""
                             className="img-fluid w-100"
-                            style={{ borderRadius: "10px" }}
+                            style={{borderRadius: "10px"}}
                         />
                     </div>
                     <div className="team-item-content p-0 py-2">
@@ -47,8 +47,8 @@ const AboutUsProfileComp = (props) => {
                 </div>
             </div>
             <Modal show={show} onHide={handleClose} size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered>
+                   aria-labelledby="contained-modal-title-vcenter"
+                   centered>
                 <Modal.Header closeButton>
                     <Modal.Title>{name}</Modal.Title>
                 </Modal.Header>

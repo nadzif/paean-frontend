@@ -6,8 +6,10 @@ import {contactUsLoaded} from "../../../application/actions/ui";
 import {getContact} from "../../../application/selectors/ui";
 import Skeleton from "react-loading-skeleton";
 import {useLanguage} from "../../components/utils/LanguageProvider";
+import {useTranslation} from "react-i18next";
 
 const ContactUSPage = () => {
+    const {t} = useTranslation();
     const {lng} = useLanguage();
     const dispatch = useDispatch();
     const contact = useSelector(getContact);
@@ -41,7 +43,7 @@ const ContactUSPage = () => {
                 <img src={BgHeader} alt="" id="background-header"/>
                 <div id="background-header" className="opacityBg"/>
                 <h1 className="text-center centerHeader text-capitalize mb-4 text-lg">
-                    {lng === 'en' ? 'Contact US' : '문의하기'}
+                    {t('contact us')}
                 </h1>
             </div>
             <div className="mainPage">

@@ -5,9 +5,11 @@ import {
     TfiViewListAlt,
 } from "react-icons/tfi";
 import {useLanguage} from "../../../components/utils/LanguageProvider";
+import {useTranslation} from "react-i18next";
 
 const HomeWidgetComp = () => {
     const {lng} = useLanguage();
+    const {t} = useTranslation();
 
     return (
         <>
@@ -19,9 +21,7 @@ const HomeWidgetComp = () => {
                                 <a href="/contactus" className="linkText">
                                     <TfiEmail size={70}/> &nbsp;&nbsp;&nbsp;
                                     <span style={{fontSize: "25px", fontWeight: "bold"}}>
-                                        {
-                                            lng === 'en' ? 'Contact US' : lng === 'kr' ? '문의하기' : ''
-                                        }
+                                        {t('contact us')}
                                     </span>
                                 </a>
                             </div>
@@ -29,9 +29,7 @@ const HomeWidgetComp = () => {
                                 <a href="/news" className="linkText">
                                     <TfiAnnouncement size={70}/> &nbsp;&nbsp;&nbsp;
                                     <span style={{fontSize: "25px", fontWeight: "bold"}}>
-                                        {
-                                            lng === 'en' ? 'News' : lng === 'kr' ? '소식' : ''
-                                        }
+                                        {t('news')}
                                     </span>
                                 </a>
                             </div>
@@ -39,9 +37,7 @@ const HomeWidgetComp = () => {
                                 <a href="/science" className="linkText">
                                     <TfiViewListAlt size={70}/> &nbsp;&nbsp;&nbsp;
                                     <span style={{fontSize: "25px", fontWeight: "bold"}}>
-                                         {
-                                             lng === 'en' ? 'Science' : lng === 'kr' ? '과학' : ''
-                                         }
+                                        {t('science')}
                                     </span>
                                 </a>
                             </div>
@@ -49,9 +45,7 @@ const HomeWidgetComp = () => {
                                 <a href="/aboutus" className="linkText">
                                     <TfiInfoAlt size={70}/> &nbsp;&nbsp;&nbsp;
                                     <span style={{fontSize: "25px", fontWeight: "bold"}}>
-                                        {
-                                            lng === 'en' ? 'About US' : lng === 'kr' ? '회사 소개' : ''
-                                        }
+                                        {t('contact us')}
                                     </span>
                                 </a>
                             </div>

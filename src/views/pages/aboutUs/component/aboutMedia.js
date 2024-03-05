@@ -4,11 +4,11 @@ const AboutMediaComp = (data) => {
   let title, subtitle, embed;
   for (const i of data.data.properties) {
     if (i.key === "title") {
-      title = data.lng === 'kr' ? i.value.kr : i.value.en
+      title = data.lng === 'kr' ? (i.value.kr || i.value.en) : (i.value.en || i.value.kr)
     } else if (i.key === "subtitle") {
-      subtitle = data.lng === 'kr' ? i.value.kr : i.value.en
+      subtitle = data.lng === 'kr' ? (i.value.kr || i.value.en) : (i.value.en || i.value.kr)
     } else if (i.key === "embed") {
-      embed = data.lng === 'kr' ? i.value.kr : i.value.en
+      embed = data.lng === 'kr' ? (i.value.kr || i.value.en) : (i.value.en || i.value.kr)
     }
   }
   return (

@@ -8,8 +8,10 @@ import {TfiBriefcase, TfiLocationPin} from "react-icons/tfi";
 import NewsListNewsLoading from "../../components/skeletonLoading/news/newsListNewsLoading";
 import moment from "moment/moment";
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 const CareerPage = () => {
+    const {t} = useTranslation();
     const {lng} = useLanguage();
     const dispatch = useDispatch();
     const job = useSelector(getJob);
@@ -24,7 +26,7 @@ const CareerPage = () => {
             <img src={BgHeader} alt="" id="background-header"/>
             <div id="background-header" className="opacityBg"/>
             <h1 className="text-center centerHeader text-capitalize mb-4 text-lg">
-                Career
+                {t('career')}
             </h1>
         </div>
         <div className="mainPage">

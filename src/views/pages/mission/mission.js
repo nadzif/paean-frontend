@@ -36,7 +36,6 @@ const MissionPageDetail = () => {
         fetchDataDetail();
     }, [home, id]);
 
-    console.log(dataDetail)
 
     return (
         <>

@@ -10,7 +10,7 @@ const HomeHighlightComp = (props) => {
     let title = '';
     for (const i of dataProps.properties) {
         if (i.key === "title") {
-            title = props.lng === 'kr' ? i.value.kr : i.value.en
+            title = props.lng === 'kr' ? (i.value.kr || i.value.en) : (i.value.en || i.value.kr)
         }
     }
     return (
@@ -30,12 +30,8 @@ const HomeHighlightComp = (props) => {
 
                                     <div className="press-content">
                                         <h3 className="mb-3 lh-36">
-                                            {props.lng === 'kr' ? data.title.kr : data.title.en}
+                                            {props.lng === 'kr' ? (data.title.kr || data.title.en) : (data.title.en || data.title.kr)}
                                         </h3>
-                                        {/* <p>
-                                            Source: {data.source}
-                                        </p> */}
-
                                         <Link
                                             to={`/content/news/1/` + data.id}
                                             className="btn btn-solid-border btn-round-full"

@@ -4,8 +4,10 @@ import LogoFooter from "../../assets/media/images/logo/footer-logo.png";
 import {TfiInfoAlt, TfiAnnouncement, TfiWorld} from "react-icons/tfi";
 import {getAddress} from "../../application/selectors/ui";
 import {useLanguage} from "./utils/LanguageProvider";
+import {useTranslation} from "react-i18next";
 
 const FooterComp = () => {
+    const {t} = useTranslation();
     const {lng} = useLanguage();
     const year = new Date().getFullYear()
     const address = useSelector(getAddress);
@@ -22,16 +24,12 @@ const FooterComp = () => {
                             <ul className="list-unstyled footer-menu lh-35 mb-4">
                                 <li>
                                     <a href="/privacy-statement">
-                                        {
-                                            lng === 'en' ? 'Privacy Statement' : lng === 'kr' ? '개인 정보 보호 정책' : ''
-                                        }
+                                        {t('privacy statement')}
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/cookie-policy">
-                                        {
-                                            lng === 'en' ? 'Cookie Policy' : lng === 'kr' ? '쿠키 정책' : ''
-                                        }
+                                        {t('cookie policy')}
                                     </a>
                                 </li>
                             </ul>
@@ -45,16 +43,12 @@ const FooterComp = () => {
                             <ul className="list-unstyled footer-menu lh-35 mb-4">
                                 <li>
                                     <a href="/">
-                                        {
-                                            lng === 'en' ? 'Home' : lng === 'kr' ? '집' : ''
-                                        }
+                                        {t('home')}
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/science">
-                                        {
-                                            lng === 'en' ? 'Science' : lng === 'kr' ? '과학' : ''
-                                        }
+                                        {t('science')}
                                     </a>
                                 </li>
                             </ul>
@@ -68,10 +62,7 @@ const FooterComp = () => {
                             <ul className="list-unstyled footer-menu lh-35 mb-4">
                                 <li>
                                     <a href="/news">
-                                        {
-                                            lng === 'en' ? 'News' : lng === 'kr' ? '소식' : ''
-                                        }
-
+                                        {t('news')}
                                     </a>
                                 </li>
                             </ul>
@@ -85,16 +76,12 @@ const FooterComp = () => {
                             <ul className="list-unstyled footer-menu lh-35 mb-4">
                                 <li>
                                     <a href="/aboutus">
-                                        {
-                                            lng === 'en' ? 'About US' : lng === 'kr' ? '회사 소개' : ''
-                                        }
+                                        {t('about us')}
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/contactus">
-                                        {
-                                            lng === 'en' ? 'Contact US' : lng === 'kr' ? '문의하기' : ''
-                                        }
+                                        {t('contact us')}
                                     </a>
                                 </li>
                             </ul>

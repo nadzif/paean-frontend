@@ -1,28 +1,30 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {jobLoaded, noPageLoaded} from "../../../../application/actions/ui";
-import {TfiBriefcase, TfiLocationPin} from "react-icons/tfi";
-import {useLanguage} from "../../../components/utils/LanguageProvider";
-import {useNavigate, useParams} from "react-router-dom";
-import {getJob} from "../../../../application/selectors/ui";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { jobLoaded, noPageLoaded } from "../../../../application/actions/ui";
+import { TfiBriefcase, TfiLocationPin } from "react-icons/tfi";
+import { useLanguage } from "../../../components/utils/LanguageProvider";
+import { useNavigate, useParams } from "react-router-dom";
+import { getJob } from "../../../../application/selectors/ui";
 import axios from "axios";
 import moment from "moment/moment";
+import { useTranslation } from "react-i18next";
 
 const SubmitJobPage = () => {
-    const {lng} = useLanguage();
-    const {id, page} = useParams();
+    const { t } = useTranslation();
+    const { lng } = useLanguage();
+    const { id, page } = useParams();
     const job = useSelector(getJob);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [fieldData, setFieldData] = useState({
-        email: '',
-        phone: '',
-        address: '',
-        references: '',
-        full_name: '',
-        cover_letter: '',
-        additional_information: '',
+        email: "",
+        phone: "",
+        address: "",
+        references: "",
+        full_name: "",
+        cover_letter: "",
+        additional_information: "",
         resume: null,
         degree_certificate: [],
         other_certificate: [],
@@ -37,7 +39,13 @@ const SubmitJobPage = () => {
     const [progressUpload, stProgressUpload] = useState(0);
     const [dataDetail, setDataDetail] = useState(null);
 
-    const validation = (fieldData.full_name !== '' && fieldData.email !== '' && fieldData.phone !== '' && fieldData.address !== '' && fieldData.resume !== null && totalSize <= (15 * 1024 * 1024))
+    const validation =
+        fieldData.full_name !== "" &&
+        fieldData.email !== "" &&
+        fieldData.phone !== "" &&
+        fieldData.address !== "" &&
+        fieldData.resume !== null &&
+        totalSize <= 15 * 1024 * 1024;
 
     const detail = () => {
         if (job && job.data) {
@@ -48,39 +56,40 @@ const SubmitJobPage = () => {
 
     const handleFileChange = (field, files) => {
         if (
-            (field === 'resume' && files.length !== 1) ||
-            ((field === 'degree_certificate' || field === 'other_certificate') && files.length > 5)
+            (field === "resume" && files.length !== 1) ||
+            ((field === "degree_certificate" || field === "other_certificate") && files.length > 5)
         ) {
             alert(`Invalid number of files for ${field}.`);
             return;
         }
 
-        const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png'];
+        const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
         for (let i = 0; i < files.length; i++) {
             if (!allowedTypes.includes(files[i].type)) {
-                alert('Invalid file type. Please upload PDF, JPEG, or PNG.');
+                alert("Invalid file type. Please upload PDF, JPEG, or PNG.");
                 return;
             }
         }
 
-        if (field === 'resume') {
+        if (field === "resume") {
             setSelectedFiles((prevFiles) => ({
                 ...prevFiles,
                 [field]: files[0],
             }));
-            setFieldData({...fieldData, [field]: files[0]});
+            setFieldData({ ...fieldData, [field]: files[0] });
         } else {
             setSelectedFiles((prevFiles) => ({
                 ...prevFiles,
                 [field]: [...prevFiles[field], ...files],
             }));
-            setFieldData({...fieldData, [field]: [...fieldData[field], ...files]});
+            setFieldData({ ...fieldData, [field]: [...fieldData[field], ...files] });
         }
     };
 
     const removeFile = (field, index) => {
         setSelectedFiles((prevFiles) => ({
-            ...prevFiles, [field]: prevFiles[field].filter((_, i) => i !== index),
+            ...prevFiles,
+            [field]: prevFiles[field].filter((_, i) => i !== index),
         }));
     };
 
@@ -110,7 +119,7 @@ const SubmitJobPage = () => {
 
     const save = async (e) => {
         e.preventDefault();
-        setLoading(true)
+        setLoading(true);
         const formData = new FormData();
 
         Object.entries(fieldData).forEach(([key, value]) => {
@@ -126,288 +135,323 @@ const SubmitJobPage = () => {
         });
 
         try {
-            const response = await axios.post('/applicant', formData, {
+            const response = await axios.post("/applicant", formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    "Content-Type": "multipart/form-data",
                 },
                 onUploadProgress: (progressEvent) => {
                     const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
-                    stProgressUpload(progress)
+                    stProgressUpload(progress);
                 },
-            })
+            });
 
             if (response.status === 201) {
-                console.log('Data berhasil disimpan ke API');
+                console.log("Data berhasil disimpan ke API");
                 setFieldData({
-                    email: '',
-                    phone: '',
-                    address: '',
-                    references: '',
-                    full_name: '',
-                    cover_letter: '',
-                    additional_information: '',
+                    email: "",
+                    phone: "",
+                    address: "",
+                    references: "",
+                    full_name: "",
+                    cover_letter: "",
+                    additional_information: "",
                     resume: null,
                     degree_certificate: null,
                     other_certificate: null,
-                })
+                });
                 setSelectedFiles({
-                    resume: [], degree_certificate: [], other_certificate: [],
-                })
-                setLoading(false)
-                window.alert('Success to Send Application')
-                navigate('/career')
+                    resume: [],
+                    degree_certificate: [],
+                    other_certificate: [],
+                });
+                setLoading(false);
+                window.alert("Success to Send Application");
+                navigate("/career");
             } else {
-                setLoading(false)
-                console.error('Gagal menyimpan data ke API');
+                setLoading(false);
+                console.error("Gagal menyimpan data ke API");
             }
         } catch (error) {
-            setLoading(false)
-            window.alert('Failed to Send Application')
-            console.error('Terjadi kesalahan:', error);
+            setLoading(false);
+            window.alert("Failed to Send Application");
+            console.error("Terjadi kesalahan:", error);
         }
     };
 
-    return (<>
-        <div>
-            {/*<img src={BgHeader} alt="" id="background-header"/>*/}
-            <div id="background-header" className="opacityBg"/>
-            <h1 className="text-center centerHeader text-capitalize mb-4 text-lg">
-                {/*{type} Content*/}
-            </h1>
-        </div>
-        <div className="contentPage">
-            <section className="contact-form-wrap section">
-                <div className="container mb-4">
-                    {dataDetail && (<>
-                        <h3 className="text-uppercase mb-2 text-lg">
-                            {lng === 'en' ? (dataDetail.title.en || dataDetail.title.kr) : (dataDetail.title.kr || dataDetail.title.en)}
-                        </h3>
-                        <div>
-                            <TfiLocationPin size={20} className="me-3"/>
-                            {lng === 'en' ? (dataDetail.location.en || dataDetail.location.kr) : (dataDetail.location.kr || dataDetail.location.en)}
-                        </div>
-                        <div>
-                            <TfiBriefcase size={20} className="me-3"/>
-                            {lng === 'en' ? (dataDetail.employment_type.en || dataDetail.employment_type.kr) : (dataDetail.employment_type.kr || dataDetail.employment_type.en)}
-                        </div>
-                    </>)}
-                    {dataDetail && (<>
-                        <h4 className="mt-3 mb-3">
-                            {lng === 'en' ? 'Job Description': '업무 설명서'}
-                        </h4>
-                        <p>
-                            {lng === 'en' ? (dataDetail.description.en || dataDetail.description.kr) : (dataDetail.description.kr || dataDetail.description.en)}
-                        </p>
-                        {/*---------------------------------------------------------------*/}
-                        <h4>{lng === 'en' ? 'Qualifications' : '자격'}</h4>
-                        <p>
-                            {lng === 'en' ? (dataDetail.qualifications.en || dataDetail.qualifications.kr) : (dataDetail.qualifications.kr || dataDetail.qualifications.en)}
-                        </p>
-                        {/*---------------------------------------------------------------*/}
-                        <h4>{lng === 'en' ? 'Application Deadline' : '신청 마감'}</h4>
-                        <p>{moment(dataDetail.applicationDeadline).format('LLL')}</p>
-                    </>)}
-                </div>
-                <div className="container">
-                    <div className=" mb-3">
-                        <h4>{lng === 'en' ? 'Apply for this Job' : '구직 신청하다'}</h4>
+    return (
+        <>
+            <div>
+                {/*<img src={BgHeader} alt="" id="background-header"/>*/}
+                <div id="background-header" className="opacityBg" />
+                <h1 className="text-center centerHeader text-capitalize mb-4 text-lg">{/*{type} Content*/}</h1>
+            </div>
+            <div className="contentPage">
+                <section className="contact-form-wrap section">
+                    <div className="container mb-4">
+                        {dataDetail && (
+                            <>
+                                <h3 className="text-uppercase mb-2 text-lg">
+                                    {lng === "en"
+                                        ? dataDetail.title.en || dataDetail.title.kr
+                                        : dataDetail.title.kr || dataDetail.title.en}
+                                </h3>
+                                <div>
+                                    <TfiLocationPin size={20} className="me-3" />
+                                    {lng === "en"
+                                        ? dataDetail.location.en || dataDetail.location.kr
+                                        : dataDetail.location.kr || dataDetail.location.en}
+                                </div>
+                                <div>
+                                    <TfiBriefcase size={20} className="me-3" />
+                                    {lng === "en"
+                                        ? dataDetail.employment_type.en || dataDetail.employment_type.kr
+                                        : dataDetail.employment_type.kr || dataDetail.employment_type.en}
+                                </div>
+                            </>
+                        )}
+                        {dataDetail && (
+                            <>
+                                <h4 className="mt-3 mb-3">{lng === "en" ? "Job Description" : "업무 설명서"}</h4>
+                                <p>
+                                    {lng === "en"
+                                        ? dataDetail.description.en || dataDetail.description.kr
+                                        : dataDetail.description.kr || dataDetail.description.en}
+                                </p>
+                                {/*---------------------------------------------------------------*/}
+                                <h4>{lng === "en" ? "Qualifications" : "자격"}</h4>
+                                <p>
+                                    {lng === "en"
+                                        ? dataDetail.qualifications.en || dataDetail.qualifications.kr
+                                        : dataDetail.qualifications.kr || dataDetail.qualifications.en}
+                                </p>
+                                {/*---------------------------------------------------------------*/}
+                                <h4>{lng === "en" ? "Application Deadline" : "신청 마감"}</h4>
+                                <p>{moment(dataDetail.applicationDeadline).format("LLL")}</p>
+                            </>
+                        )}
                     </div>
-
-                    <form onSubmit={(event) => save(event)}>
-                        <div className="form-group">
-                            <div>{lng === 'en' ? 'Name' : '이름'}</div>
-                            <input
-                                id="megakitname"
-                                name="full_name"
-                                type="text"
-                                className="form-control"
-                                placeholder={lng === 'en' ? 'Name' : '이름'}
-                                required
-                                value={fieldData.full_name}
-                                onChange={(e) => setFieldData({...fieldData, full_name: e.target.value})}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <div>{lng === 'en' ? 'Phone Number' : '전화 번호'}</div>
-                            <input
-                                id="megakitphone"
-                                name="phone"
-                                type="tel"
-                                className="form-control"
-                                placeholder={lng === 'en' ? 'Phone Number' : '전화 번호'}
-                                required
-                                value={fieldData.phone}
-                                onChange={(e) => setFieldData({...fieldData, phone: e.target.value})}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <div>{lng === 'en' ? 'Email' : '이메일'}</div>
-                            <input
-                                id="megakitemail"
-                                name="email"
-                                type="email"
-                                className="form-control"
-                                placeholder={lng === 'en' ? 'Email' : '이메일'}
-                                required
-                                value={fieldData.email}
-                                onChange={(e) => setFieldData({...fieldData, email: e.target.value})}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <div>{lng === 'en' ? 'Address' : '주소'}</div>
-                            <input
-                                id="megakitaddress"
-                                name="address"
-                                type="text"
-                                className="form-control"
-                                placeholder={lng === 'en' ? 'Address' : '주소'}
-                                required
-                                value={fieldData.address}
-                                onChange={(e) => setFieldData({...fieldData, address: e.target.value})}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <div>{lng === 'en' ? 'References' : '참고자료'}</div>
-                            <textarea
-                                id="megakitreferences"
-                                name="references"
-                                className="form-control"
-                                placeholder={lng === 'en' ? 'References' : '참고자료'}
-                                value={fieldData.references}
-                                onChange={(e) => setFieldData({...fieldData, references: e.target.value})}
-                            />
-                        </div>
-                        <div style={{paddingBottom: '15px'}}>
-                            <div>{lng === 'en' ? 'Curriculum Vitae' : '이력서'}</div>
-                            <input
-                                id="megakitcv"
-                                name="resume"
-                                type="file"
-                                className="form-control"
-                                placeholder={lng === 'en' ? 'Curriculum Vitae' : '이력서'}
-                                multiple
-                                onChange={(e) => handleFileChange('resume', e.target.files)}
-                            />
-                        </div>
-                        <div style={{paddingBottom: '15px'}}>
-                            <div>{lng === 'en' ? 'Degree Certificate' : '학위 증명서'}</div>
-                            <input
-                                id="megakitbachelor"
-                                name="degree_certificate"
-                                type="file"
-                                className="form-control"
-                                placeholder={lng === 'en' ? 'Degree Certificate' : '학위 증명서'}
-                                multiple
-                                onChange={(e) => handleFileChange('degree_certificate', e.target.files)}
-                            />
-                        </div>
-                        {selectedFiles.degree_certificate && (<div className="table-responsive mb-3">
-                            <table className="table table-bordered table-sm">
-                                <thead>
-                                <tr>
-                                    <th scope="col" style={{width: '5%'}}>#</th>
-                                    <th scope="col">{lng === 'en' ? 'NAME' : '이름'}</th>
-                                    <th scope="col" style={{width: '10%'}}>{lng === 'en' ? 'SIZE' : '크기'}</th>
-                                    <th scope="col" style={{width: '7%'}}>{lng === 'en' ? 'ACTION' : '행동'}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {selectedFiles.degree_certificate.map((file, index) => (<tr key={index}>
-                                    <th scope="row">{index + 1}</th>
-                                    <td>{file.name}</td>
-                                    <td>{(file.size / 1000000).toFixed(2)} mb</td>
-                                    <td>
-                                        <button
-                                            onClick={() => removeFile('degree_certificate', index)}
-                                            className="ms-3"
-                                        >
-                                            {lng === 'en' ? 'Remove' : '제거하다'}
-                                        </button>
-                                    </td>
-                                </tr>))}
-                                </tbody>
-                            </table>
-                        </div>)}
-                        <div style={{paddingBottom: '15px'}}>
-                            <div>{lng === 'en' ? 'Other Certificates' : '기타 인증서'}</div>
-                            <input
-                                id="megakitother"
-                                name="other_certificate"
-                                type="file"
-                                className="form-control"
-                                placeholder="Other Certificates"
-                                multiple
-                                onChange={(e) => handleFileChange('other_certificate', e.target.files)}
-                            />
+                    <div className="container">
+                        <div className=" mb-3">
+                            <h4>{lng === "en" ? "Apply for this Job" : "구직 신청하다"}</h4>
                         </div>
 
-                        {selectedFiles.other_certificate && (<div className="table-responsive mb-3">
-                            <table className="table table-bordered table-sm">
-                                <thead>
-                                <tr>
-                                    <th scope="col" style={{width: '5%'}}>#</th>
-                                    <th scope="col">{lng === 'en' ? 'NAME' : '이름'}</th>
-                                    <th scope="col" style={{width: '10%'}}>{lng === 'en' ? 'SIZE' : '크기'}</th>
-                                    <th scope="col" style={{width: '7%'}}>{lng === 'en' ? 'ACTION' : '행동'}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {selectedFiles.other_certificate.map((file, index) => (<tr key={index}>
-                                    <th scope="row">{index + 1}</th>
-                                    <td>{file.name}</td>
-                                    <td>{(file.size / 1000000).toFixed(2)} mb</td>
-                                    <td>
-                                        <button
-                                            onClick={() => removeFile('other_certificate', index)}
-                                            className="ms-3"
-                                        >
-                                            {lng === 'en' ? 'Remove' : '제거하다'}
-                                        </button>
-                                    </td>
-                                </tr>))}
-                                </tbody>
-                            </table>
-                        </div>)}
-                        {(selectedFiles.resume || selectedFiles.degree_certificate || selectedFiles.other_certificate) && (
-                            <div className="text-center">
-                                <h4>
-                                    {lng === 'en' ? 'Total File Size' : '총 파일 크기'}
-                                    <span
-                                        className="badge bg-secondary ms-1 me-1">{(totalSize / 1000000).toFixed(2)} MB</span>
-                                    {lng === 'en' ? 'Max File Size' : '최대 파일 크기'}
-                                    <span className="badge bg-danger ms-1 me-1">15 MB</span>
-                                </h4>
-                            </div>)}
+                        <form onSubmit={(event) => save(event)}>
+                            <div className="form-group">
+                                <div>{t("name")}</div>
+                                <input
+                                    id="megakitname"
+                                    name="full_name"
+                                    type="text"
+                                    className="form-control"
+                                    placeholder={t("name")}
+                                    required
+                                    value={fieldData.full_name}
+                                    onChange={(e) => setFieldData({ ...fieldData, full_name: e.target.value })}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <div>{t("phone number")}</div>
+                                <input
+                                    id="megakitphone"
+                                    name="phone"
+                                    type="tel"
+                                    className="form-control"
+                                    placeholder={t("phone number")}
+                                    required
+                                    value={fieldData.phone}
+                                    onChange={(e) => setFieldData({ ...fieldData, phone: e.target.value })}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <div>{t("email")}</div>
+                                <input
+                                    id="megakitemail"
+                                    name="email"
+                                    type="email"
+                                    className="form-control"
+                                    placeholder={t("email")}
+                                    required
+                                    value={fieldData.email}
+                                    onChange={(e) => setFieldData({ ...fieldData, email: e.target.value })}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <div>{t("address")}</div>
+                                <input
+                                    id="megakitaddress"
+                                    name="address"
+                                    type="text"
+                                    className="form-control"
+                                    placeholder={t("address")}
+                                    required
+                                    value={fieldData.address}
+                                    onChange={(e) => setFieldData({ ...fieldData, address: e.target.value })}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <div>{t("references")}</div>
+                                <textarea
+                                    id="megakitreferences"
+                                    name="references"
+                                    className="form-control"
+                                    placeholder={t("references")}
+                                    value={fieldData.references}
+                                    onChange={(e) => setFieldData({ ...fieldData, references: e.target.value })}
+                                />
+                            </div>
+                            <div style={{ paddingBottom: "15px" }}>
+                                <div>{t("curriculum vitae")}</div>
+                                <input
+                                    id="megakitcv"
+                                    name="resume"
+                                    type="file"
+                                    className="form-control"
+                                    placeholder={t("curriculum vitae")}
+                                    multiple
+                                    onChange={(e) => handleFileChange("resume", e.target.files)}
+                                />
+                            </div>
+                            <div style={{ paddingBottom: "15px" }}>
+                                <div>{t("degree certificate")}</div>
+                                <input
+                                    id="megakitbachelor"
+                                    name="degree_certificate"
+                                    type="file"
+                                    className="form-control"
+                                    placeholder={t("degree certificate")}
+                                    multiple
+                                    onChange={(e) => handleFileChange("degree_certificate", e.target.files)}
+                                />
+                            </div>
+                            {selectedFiles.degree_certificate && (
+                                <div className="table-responsive mb-3">
+                                    <table className="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style={{ width: "5%" }}>
+                                                    #
+                                                </th>
+                                                <th scope="col">{t("name")}</th>
+                                                <th scope="col" style={{ width: "10%" }}>
+                                                    {t("size")}
+                                                </th>
+                                                <th scope="col" style={{ width: "7%" }}>
+                                                    {t("action")}
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {selectedFiles.degree_certificate.map((file, index) => (
+                                                <tr key={index}>
+                                                    <th scope="row">{index + 1}</th>
+                                                    <td>{file.name}</td>
+                                                    <td>{(file.size / 1000000).toFixed(2)} mb</td>
+                                                    <td>
+                                                        <button
+                                                            onClick={() => removeFile("degree_certificate", index)}
+                                                            className="ms-3"
+                                                        >
+                                                            {t("remove")}
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            )}
+                            <div style={{ paddingBottom: "15px" }}>
+                                <div>{lng === "en" ? "Other Certificates" : "기타 인증서"}</div>
+                                <input
+                                    id="megakitother"
+                                    name="other_certificate"
+                                    type="file"
+                                    className="form-control"
+                                    placeholder={t("other certificates")}
+                                    multiple
+                                    onChange={(e) => handleFileChange("other_certificate", e.target.files)}
+                                />
+                            </div>
 
-                        <progress max={15 * 1024 * 1024} value={totalSize} className="w-100"></progress>
+                            {selectedFiles.other_certificate && (
+                                <div className="table-responsive mb-3">
+                                    <table className="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style={{ width: "5%" }}>
+                                                    #
+                                                </th>
+                                                <th scope="col">{t("name")}</th>
+                                                <th scope="col" style={{ width: "10%" }}>
+                                                    {t("size")}
+                                                </th>
+                                                <th scope="col" style={{ width: "7%" }}>
+                                                    {t("action")}
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {selectedFiles.other_certificate.map((file, index) => (
+                                                <tr key={index}>
+                                                    <th scope="row">{index + 1}</th>
+                                                    <td>{file.name}</td>
+                                                    <td>{(file.size / 1000000).toFixed(2)} mb</td>
+                                                    <td>
+                                                        <button
+                                                            onClick={() => removeFile("other_certificate", index)}
+                                                            className="ms-3"
+                                                        >
+                                                            {t("remove")}
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            )}
+                            {(selectedFiles.resume ||
+                                selectedFiles.degree_certificate ||
+                                selectedFiles.other_certificate) && (
+                                <div className="text-center">
+                                    <h4>
+                                        {t("total file size")}
+                                        <span className="badge bg-secondary ms-1 me-1">
+                                            {(totalSize / 1000000).toFixed(2)} MB
+                                        </span>
+                                        {t("max file size")}
+                                        <span className="badge bg-danger ms-1 me-1">15 MB</span>
+                                    </h4>
+                                </div>
+                            )}
 
-                        <div>
-                            {
-                                loading
-                                    ?
+                            <progress max={15 * 1024 * 1024} value={totalSize} className="w-100"></progress>
+
+                            <div>
+                                {loading ? (
                                     <button
                                         className={`btn btn-medium btn-main btn-round-full mt-3 disabled`}
                                         type="submit"
                                     >
-
-                                        {progressUpload + ' %'}
+                                        {progressUpload + " %"}
                                     </button>
-                                    :
+                                ) : (
                                     <button
-                                        className={`btn btn-medium btn-main btn-round-full mt-3 ${validation ? '' : 'disabled'}`}
+                                        className={`btn btn-medium btn-main btn-round-full mt-3 ${
+                                            validation ? "" : "disabled"
+                                        }`}
                                         type="submit"
                                     >
-
-                                        {lng === 'en' ? 'Send Application' : '신청서 보내기'}
+                                        {t("send application")}
                                     </button>
-                            }
-                        </div>
-                    </form>
-
-                </div>
-            </section>
-        </div>
-    </>);
+                                )}
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </>
+    );
 };
 
 export default SubmitJobPage;
