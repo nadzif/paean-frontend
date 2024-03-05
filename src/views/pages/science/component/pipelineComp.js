@@ -39,6 +39,10 @@ const ProgressBarTable = () => {
                   .pipeline-table td {
                     border-bottom: none !important; 
                     border-top: none !important; 
+                    font-family: Poppins,sans-serif;
+                  }
+                  .text-bold {
+                    font-weight: bold;
                   }
                 `}
             </style>
@@ -56,9 +60,13 @@ const ProgressBarTable = () => {
                     {i.progresses.map((e, index) => {
                         let isDivine = false
                         return (<tr>
-                            {index === 0 ? (<td rowSpan={i.progresses.length}>{i.name}</td>) : (<></>)}
+                            {index === 0 ? (<td rowSpan={i.progresses.length}>
+                                <div className="text-bold">{i.name}</div>
+                            </td>) : (<></>)}
                             <td>
-                                {e.name}
+                                <div className="text-bold">
+                                    {e.name}
+                                </div>
                             </td>
                             <td>
                                 {e.indication}
