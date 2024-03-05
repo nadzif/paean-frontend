@@ -41,7 +41,7 @@ const NavbarComp = () => {
 
     useEffect(() => {
         if (!localStorage.getItem("lng")) {
-            localStorage.setItem('lng', 'kr')
+            localStorage.setItem('lng', 'en')
         }
     }, []);
 
@@ -155,38 +155,39 @@ const NavbarComp = () => {
 
                                 </Link>
                             </Nav.Link>
-                            <Nav.Link>
-                                <Link
-                                    to="#"
-                                    className="buttonSizeNav"
-                                    style={{
-                                        color: onTopPage ? (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'black'),
-                                    }}
-                                    onClick={() => handleLanguage('kr')}
-                                >
-                                    kr
-                                </Link>
-                                <Link
-                                    to="#"
-                                    className="buttonSizeNav"
-                                    style={{
-                                        color: onTopPage ? 'white' : 'black', margin: '0 5px'
-                                    }}
-                                    onClick={() => handleLanguage('kr')}
-                                >
-                                    |
-                                </Link>
-                                <Link
-                                    to="#"
-                                    className="buttonSizeNav me-2"
-                                    style={{
-                                        color: onTopPage ? (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'black'),
-                                    }}
-                                    onClick={() => handleLanguage('en')}
-                                >
-                                    en
-                                </Link>
-                            </Nav.Link> </Nav>
+                            {/*<Nav.Link>*/}
+                            {/*    <Link*/}
+                            {/*        to="#"*/}
+                            {/*        className="buttonSizeNav"*/}
+                            {/*        style={{*/}
+                            {/*            color: onTopPage ? (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'black'),*/}
+                            {/*        }}*/}
+                            {/*        onClick={() => handleLanguage('kr')}*/}
+                            {/*    >*/}
+                            {/*        kr*/}
+                            {/*    </Link>*/}
+                            {/*    <Link*/}
+                            {/*        to="#"*/}
+                            {/*        className="buttonSizeNav"*/}
+                            {/*        style={{*/}
+                            {/*            color: onTopPage ? 'white' : 'black', margin: '0 5px'*/}
+                            {/*        }}*/}
+                            {/*        onClick={() => handleLanguage('kr')}*/}
+                            {/*    >*/}
+                            {/*        |*/}
+                            {/*    </Link>*/}
+                            {/*    <Link*/}
+                            {/*        to="#"*/}
+                            {/*        className="buttonSizeNav me-2"*/}
+                            {/*        style={{*/}
+                            {/*            color: onTopPage ? (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'black'),*/}
+                            {/*        }}*/}
+                            {/*        onClick={() => handleLanguage('en')}*/}
+                            {/*    >*/}
+                            {/*        en*/}
+                            {/*    </Link>*/}
+                            {/*</Nav.Link>*/}
+                        </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
