@@ -69,54 +69,7 @@ const NavbarComp = () => {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav  className="justify-content-end flex-grow-1 pe-3">
-                            {/*<NavDropdown*/}
-                            {/*    title={language}*/}
-                            {/*    id="basic-nav-dropdown"*/}
-                            {/*    className="buttonSizeNav"*/}
-                            {/*    style={{color: onTopPage ? "white" : "black"}}*/}
-                            {/*>*/}
-                            {/*    <NavDropdown.Item onClick={() => handleLanguage('en')}>*/}
-                            {/*        <img src={Usa} alt="en" width="30" height="30"/>*/}
-                            {/*        <span className="dropdown-text ms-2">ENGLISH</span>*/}
-                            {/*    </NavDropdown.Item>*/}
-                            {/*    <NavDropdown.Item onClick={() => handleLanguage('kr')}>*/}
-                            {/*        <img src={Korea} alt="kr" width="30" height="30"/>*/}
-                            {/*        <span className="dropdown-text ms-2">KOREA</span>*/}
-                            {/*    </NavDropdown.Item>*/}
-                            {/*</NavDropdown>*/}
-                            <Nav.Link>
-                                <Link
-                                    to="#"
-                                    className="buttonSizeNav"
-                                    style={{
-                                        color: onTopPage ? (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'black'),
-                                    }}
-                                    onClick={() => handleLanguage('kr')}
-                                >
-                                    kr
-                                </Link>
-                                <Link
-                                    to="#"
-                                    className="buttonSizeNav"
-                                    style={{
-                                        color: onTopPage ? 'white' : 'black', margin: '0 5px'
-                                    }}
-                                    onClick={() => handleLanguage('kr')}
-                                >
-                                    |
-                                </Link>
-                                <Link
-                                    to="#"
-                                    className="buttonSizeNav me-2"
-                                    style={{
-                                        color: onTopPage ? (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'black'),
-                                    }}
-                                    onClick={() => handleLanguage('en')}
-                                >
-                                    en
-                                </Link>
-                            </Nav.Link>
+                        <Nav className="justify-content-end flex-grow-1 pe-3">
                             <Nav.Link>
                                 <Link
                                     to="/"
@@ -202,7 +155,38 @@ const NavbarComp = () => {
 
                                 </Link>
                             </Nav.Link>
-                        </Nav>
+                            <Nav.Link>
+                                <Link
+                                    to="#"
+                                    className="buttonSizeNav"
+                                    style={{
+                                        color: onTopPage ? (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'black'),
+                                    }}
+                                    onClick={() => handleLanguage('kr')}
+                                >
+                                    kr
+                                </Link>
+                                <Link
+                                    to="#"
+                                    className="buttonSizeNav"
+                                    style={{
+                                        color: onTopPage ? 'white' : 'black', margin: '0 5px'
+                                    }}
+                                    onClick={() => handleLanguage('kr')}
+                                >
+                                    |
+                                </Link>
+                                <Link
+                                    to="#"
+                                    className="buttonSizeNav me-2"
+                                    style={{
+                                        color: onTopPage ? (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'black'),
+                                    }}
+                                    onClick={() => handleLanguage('en')}
+                                >
+                                    en
+                                </Link>
+                            </Nav.Link> </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
