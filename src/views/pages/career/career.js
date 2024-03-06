@@ -32,7 +32,12 @@ const CareerPage = () => {
         <div className="mainPage">
             <section className="contact-form-wrap section">
                 <div className="container">
-                    <h2 className="content-title text-center mb-5">Our Openings</h2>
+
+                    {
+                        job.data !== undefined && (!job.data || job.data.length === 0)
+                            ? <h2 className="content-title text-center mb-5">Currently We're Not Hiring</h2>
+                            : <h2 className="content-title text-center mb-5">Our Openings</h2>
+                    }
                     {
                         job.data !== undefined ? job.data.map(data => {
                             return (
@@ -75,7 +80,6 @@ const CareerPage = () => {
                                                         Apply
                                                     </Link>
                                             }
-
                                         </div>
                                     </div>
                                 </div>

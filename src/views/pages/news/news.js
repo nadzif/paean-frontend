@@ -98,7 +98,7 @@ const NewsPage = () => {
                 <div className="container">
                     <h2 className="content-title">News Release</h2>
                     <div className="row">
-                        {news.data !== undefined ? news.data.map(data => {
+                        {news.data !== undefined ? news.data.length !== 0 ? news.data.map(data => {
                             return (<div
                                 key={data.id}
                                 className="col-lg-6 col-md-6 mb-5"
@@ -161,95 +161,78 @@ const NewsPage = () => {
                                     </div>
                                 </div>
                             </div>)
-                        }) : <NewsListNewsLoading/>}
+                        }) : <p className="text-white text-center mb-5">No Data Available</p> : <NewsListNewsLoading/>}
                     </div>
                 </div>
 
-                {news.data !== undefined
-                    ? <div className="row justify-content-center mt-5">
+                {news.data !== undefined ? news.data.length !== 0 ? <div className="row justify-content-center mt-5">
                         <div className="col-lg-6 text-center">
                             <nav className="navigation pagination d-inline-block">
                                 <div className="nav-links">
-                                    {
-                                        pageNews > 1
-                                            ? <button
-                                                style={{
-                                                    background: 'none',
-                                                    border: 'none',
-                                                    cursor: 'pointer',
-                                                    'text-transform': 'uppercase'
-                                                }}
-                                                type="button"
-                                                className="prev page-numbers text-white"
-                                                onClick={() => handlePaginationNews(pageNews - 1)}
-                                            >
-                                                Prev
-                                            </button>
-                                            : <button
-                                                style={{
-                                                    background: 'none',
-                                                    border: 'none',
-                                                    'text-transform': 'uppercase'
-                                                }}
-                                                type="button"
-                                                className="prev page-numbers text-white"
-                                                disabled={true}
-                                            >
-                                                Prev
-                                            </button>
-                                    }
-                                    {
-                                        Array.from({length: news.meta?.totalPages}, (_, index) => (
-                                            <button
-                                                key={index}
-                                                style={{
-                                                    background: 'none',
-                                                    border: 'none',
-                                                    cursor: 'pointer',
-                                                    'text-transform': 'uppercase'
-                                                }}
-                                                type="button"
-                                                className="page-numbers text-white"
-                                                onClick={() => handlePaginationNews(index + 1)}
-                                            >
-                                                {index + 1}
-                                            </button>
-                                        ))
-                                    }
-                                    {
-                                        pageNews !== news.meta?.totalPages
-                                            ? <button
-                                                style={{
-                                                    background: 'none',
-                                                    border: 'none',
-                                                    cursor: 'pointer',
-                                                    'text-transform': 'uppercase'
-                                                }}
-                                                type="button"
-                                                className="prev page-numbers text-white"
-                                                onClick={() => handlePaginationNews(pageNews + 1)}
-                                            >
-                                                Next
-                                            </button>
-                                            : <button
-                                                style={{
-                                                    background: 'none',
-                                                    border: 'none',
-                                                    'text-transform': 'uppercase'
-                                                }}
-                                                type="button"
-                                                className="prev page-numbers text-white"
-                                                disabled={true}
-                                            >
-                                                Next
-                                            </button>
-                                    }
+                                    {pageNews > 1 ? <button
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            cursor: 'pointer',
+                                            'text-transform': 'uppercase'
+                                        }}
+                                        type="button"
+                                        className="prev page-numbers text-white"
+                                        onClick={() => handlePaginationNews(pageNews - 1)}
+                                    >
+                                        Prev
+                                    </button> : <button
+                                        style={{
+                                            background: 'none', border: 'none', 'text-transform': 'uppercase'
+                                        }}
+                                        type="button"
+                                        className="prev page-numbers text-white"
+                                        disabled={true}
+                                    >
+                                        Prev
+                                    </button>}
+                                    {Array.from({length: news.meta?.totalPages}, (_, index) => (<button
+                                        key={index}
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            cursor: 'pointer',
+                                            'text-transform': 'uppercase'
+                                        }}
+                                        type="button"
+                                        className="page-numbers text-white"
+                                        onClick={() => handlePaginationNews(index + 1)}
+                                    >
+                                        {index + 1}
+                                    </button>))}
+                                    {pageNews !== news.meta?.totalPages ? <button
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            cursor: 'pointer',
+                                            'text-transform': 'uppercase'
+                                        }}
+                                        type="button"
+                                        className="prev page-numbers text-white"
+                                        onClick={() => handlePaginationNews(pageNews + 1)}
+                                    >
+                                        Next
+                                    </button> : <button
+                                        style={{
+                                            background: 'none', border: 'none', 'text-transform': 'uppercase'
+                                        }}
+                                        type="button"
+                                        className="prev page-numbers text-white"
+                                        disabled={true}
+                                    >
+                                        Next
+                                    </button>}
                                 </div>
                             </nav>
                         </div>
-                    </div>
-                    : null
-                }
+                    </div> : null
+
+                    : null}
             </section>
             {/*//////////////////////////// blog ///////////////////////////////////*/}
             <section
@@ -259,7 +242,12 @@ const NewsPage = () => {
                 <div className="container">
                     <h2 className="content-title mb-5">Event</h2>
                     <div className="row">
-                        {blog.data !== undefined ? blog.data.map(data => {
+                        {/*{*/}
+                        {/*    blog.data !== undefined && (!blog.data || blog.data.length === 0)*/}
+                        {/*        ? <p className="text-center mb-5">No Data Available</p>*/}
+                        {/*        : null*/}
+                        {/*}*/}
+                        {blog.data !== undefined ? blog.data.length !== 0 ? blog.data.map(data => {
                             return (<div
                                 key={data.id}
                                 className="col-lg-6 col-md-6 mb-5"
@@ -322,92 +310,78 @@ const NewsPage = () => {
                                     </div>
                                 </div>
                             </div>)
-                        }) : <NewsListNewsLoading/>}
+                        }) : <p className=" text-center mb-5">No Data Available</p> : <NewsListNewsLoading/>}
                     </div>
                 </div>
 
-                {blog.data !== undefined ? <div className="row justify-content-center mt-5">
-                    <div className="col-lg-6 text-center">
-                        <nav className="navigation pagination d-inline-block">
-                            <div className="nav-links">
-                                {
-                                    pageBlog > 1
-                                        ? <button
-                                            style={{
-                                                background: 'none',
-                                                border: 'none',
-                                                cursor: 'pointer',
-                                                'text-transform': 'uppercase'
-                                            }}
-                                            className="prev page-numbers"
-                                            onClick={() => handlePaginationBlog(pageBlog - 1)}
-                                        >
-                                            Prev
-                                        </button>
-                                        : <button
-                                            style={{
-                                                background: 'none',
-                                                border: 'none',
-                                                'text-transform': 'uppercase'
-                                            }}
-                                            type="button"
-                                            className="prev page-numbers"
-                                            disabled={true}
-                                        >
-                                            Prev
-                                        </button>
-                                }
+                {blog.data !== undefined ? blog.data.length !== 0 ? (<div className="row justify-content-center mt-5">
+                        <div className="col-lg-6 text-center">
+                            <nav className="navigation pagination d-inline-block">
+                                <div className="nav-links">
+                                    {pageBlog > 1 ? <button
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            cursor: 'pointer',
+                                            'text-transform': 'uppercase'
+                                        }}
+                                        className="prev page-numbers"
+                                        onClick={() => handlePaginationBlog(pageBlog - 1)}
+                                    >
+                                        Prev
+                                    </button> : <button
+                                        style={{
+                                            background: 'none', border: 'none', 'text-transform': 'uppercase'
+                                        }}
+                                        type="button"
+                                        className="prev page-numbers"
+                                        disabled={true}
+                                    >
+                                        Prev
+                                    </button>}
 
-                                {
-                                    Array.from({length: blog.meta?.totalPages}, (_, index) => (
-                                        <button
-                                            key={index}
-                                            style={{
-                                                background: 'none',
-                                                border: 'none',
-                                                cursor: 'pointer',
-                                                'text-transform': 'uppercase'
-                                            }}
-                                            type="button"
-                                            className="page-numbers"
-                                            onClick={() => handlePaginationBlog(index + 1)}
-                                        >
-                                            {index + 1}
-                                        </button>
-                                    ))
-                                }
-                                {
-                                    pageBlog !== blog.meta?.totalPages
-                                        ? <button
-                                            style={{
-                                                background: 'none',
-                                                border: 'none',
-                                                cursor: 'pointer',
-                                                'text-transform': 'uppercase'
-                                            }}
-                                            type="button"
-                                            className="prev page-numbers"
-                                            onClick={() => handlePaginationBlog(pageBlog + 1)}
-                                        >
-                                            Next
-                                        </button>
-                                        : <button
-                                            style={{
-                                                background: 'none',
-                                                border: 'none',
-                                                'text-transform': 'uppercase'
-                                            }}
-                                            type="button"
-                                            className="prev page-numbers"
-                                            disabled={true}
-                                        >
-                                            Next
-                                        </button>
-                                }
-                            </div>
-                        </nav>
-                    </div>
-                </div> : <div/>}
+                                    {Array.from({length: blog.meta?.totalPages}, (_, index) => (<button
+                                        key={index}
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            cursor: 'pointer',
+                                            'text-transform': 'uppercase'
+                                        }}
+                                        type="button"
+                                        className="page-numbers"
+                                        onClick={() => handlePaginationBlog(index + 1)}
+                                    >
+                                        {index + 1}
+                                    </button>))}
+                                    {pageBlog !== blog.meta?.totalPages ? <button
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            cursor: 'pointer',
+                                            'text-transform': 'uppercase'
+                                        }}
+                                        type="button"
+                                        className="prev page-numbers"
+                                        onClick={() => handlePaginationBlog(pageBlog + 1)}
+                                    >
+                                        Next
+                                    </button> : <button
+                                        style={{
+                                            background: 'none', border: 'none', 'text-transform': 'uppercase'
+                                        }}
+                                        type="button"
+                                        className="prev page-numbers"
+                                        disabled={true}
+                                    >
+                                        Next
+                                    </button>}
+                                </div>
+                            </nav>
+                        </div>
+                    </div>) : null
+
+                    : null}
             </section>
         </div>
     </>);
