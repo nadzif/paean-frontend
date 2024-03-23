@@ -1,18 +1,24 @@
 import {useDispatch, useSelector} from "react-redux";
 import BgHeader from "../../../assets/media/images/page-header/contact-us.jpg";
 import {TfiDirection, TfiMobile, TfiEmail} from "react-icons/tfi";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {contactUsLoaded} from "../../../application/actions/ui";
 import {getContact} from "../../../application/selectors/ui";
 import Skeleton from "react-loading-skeleton";
 import {useLanguage} from "../../components/utils/LanguageProvider";
 import {useTranslation} from "react-i18next";
+import axios from "axios";
 
 const ContactUSPage = () => {
     const {t} = useTranslation();
     const {lng} = useLanguage();
     const dispatch = useDispatch();
     const contact = useSelector(getContact);
+    const [loading, setLoading] = useState(false);
+    const [progressUpload, stProgressUpload] = useState(0);
+    const [inputName, setInputName] = useState('');
+    const [inputEmail, setInputEmail] = useState('');
+    const [inputMessage, setInputMessage] = useState('');
     useEffect(() => {
         dispatch(contactUsLoaded);
     }, [dispatch]);
@@ -37,6 +43,43 @@ const ContactUSPage = () => {
         }
     });
 
+    const handelSendMessage = async (e) => {
+        e.preventDefault();
+        setLoading(true)
+
+        try {
+            const response = await axios.post('/contactus', {
+                name: inputName,
+                email: inputEmail,
+                message: inputMessage
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                onUploadProgress: (progressEvent) => {
+                    const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+                    stProgressUpload(progress)
+                },
+            })
+
+            if (response.status === 200) {
+                setInputName('')
+                setInputEmail('')
+                setInputMessage('')
+                setLoading(false)
+                window.alert('Success to Send Application')
+            } else {
+                setLoading(false)
+                console.error('Gagal menyimpan data ke API');
+            }
+
+        } catch (error) {
+            setLoading(false)
+            window.alert('Failed to Send Application')
+            console.error('Terjadi kesalahan:', error);
+        }
+    }
+
     return (
         <>
             <div style={{paddingBottom: "20%"}}>
@@ -51,8 +94,7 @@ const ContactUSPage = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-6 col-md-12 col-sm-12">
-                                <form data-request="{{ __SELF__ }}::onFormSubmit" action={`mailto:${email}`}
-                                      method="post" enctype="text/plain">
+                                <form onSubmit={handelSendMessage}>
                                     <div className="row">
                                         <div className="col-12">
                                             <div
@@ -72,6 +114,8 @@ const ContactUSPage = () => {
                                             className="form-control"
                                             placeholder="Your Name"
                                             required
+                                            value={inputName}
+                                            onChange={(e) => setInputName(e.target.value)}
                                         />
                                     </div>
                                     <div className="form-group">
@@ -82,6 +126,8 @@ const ContactUSPage = () => {
                                             className="form-control"
                                             placeholder="Email Address"
                                             required
+                                            value={inputEmail}
+                                            onChange={(e) => setInputEmail(e.target.value)}
                                         />
                                     </div>
 
@@ -93,6 +139,8 @@ const ContactUSPage = () => {
                                             rows="4"
                                             placeholder="Your Message"
                                             required
+                                            value={inputMessage}
+                                            onChange={(e) => setInputMessage(e.target.value)}
                                         />
                                     </div>
 
