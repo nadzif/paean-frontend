@@ -56,50 +56,63 @@ const ProgressBarTable = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {pipeline.map((i) => (<>
+
+                {pipeline.map((i, indexPipeline) => (<>
+                    {
+                        indexPipeline !== 0 &&
+                        <tr>
+                            <td colSpan={8} style={{backgroundColor: "#ddd"}}>
+                                &nbsp;
+                            </td>
+                        </tr>
+                    }
                     {i.progresses.map((e, index) => {
                         let isDivine = false
-                        return (<tr>
-                            {index === 0 ? (<td rowSpan={i.progresses.length}>
-                                <div className="text-bold">{i.name}</div>
-                            </td>) : (<></>)}
-                            <td>
-                                <div className="text-bold">
-                                    {e.name}
-                                </div>
-                            </td>
-                            <td>
-                                {e.indication}
-                            </td>
-                            {phase.map((p) => {
-                                if (p.id === e.phase_id) {
-                                    isDivine = true
-                                    return (
-                                        <td className="progress-cell">
-                                            <div style={{
-                                                "margin-top": "5px",
-                                                "margin-bottom": "5px",
-                                                "background": `linear-gradient(to right, rgb(132, 183, 249) ${e.phase_rate}%, white 0%)`,
-                                                "height": "20px"
-                                            }}></div>
-                                        </td>
-                                    )
-                                } else {
-                                    if (isDivine) {
-                                        return (<td className="progress-cell"></td>)
-                                    } else {
-                                        return (<td className="progress-cell">
-                                            <div style={{
-                                                "margin-top": "5px",
-                                                "margin-bottom": "5px",
-                                                "background": `linear-gradient(to right, rgb(132, 183, 249) 100%, white 0%)`,
-                                                "height": "20px"
-                                            }}></div>
-                                        </td>)
-                                    }
-                                }
-                            })}
-                        </tr>)
+                        return (
+                            <>
+                                <tr>
+                                    {index === 0 ? (<td rowSpan={i.progresses.length}>
+                                        <div className="text-bold">{i.name}</div>
+                                    </td>) : (<></>)}
+                                    <td>
+                                        <div className="text-bold">
+                                            {e.name}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {e.indication}
+                                    </td>
+                                    {phase.map((p) => {
+                                        if (p.id === e.phase_id) {
+                                            isDivine = true
+                                            return (
+                                                <td className="progress-cell">
+                                                    <div style={{
+                                                        "margin-top": "5px",
+                                                        "margin-bottom": "5px",
+                                                        "background": `linear-gradient(to right, rgb(132, 183, 249) ${e.phase_rate}%, white 0%)`,
+                                                        "height": "20px"
+                                                    }}></div>
+                                                </td>
+                                            )
+                                        } else {
+                                            if (isDivine) {
+                                                return (<td className="progress-cell"></td>)
+                                            } else {
+                                                return (<td className="progress-cell">
+                                                    <div style={{
+                                                        "margin-top": "5px",
+                                                        "margin-bottom": "5px",
+                                                        "background": `linear-gradient(to right, rgb(132, 183, 249) 100%, white 0%)`,
+                                                        "height": "20px"
+                                                    }}></div>
+                                                </td>)
+                                            }
+                                        }
+                                    })}
+                                </tr>
+                            </>
+                        )
                     })}
                 </>))}
                 </tbody>

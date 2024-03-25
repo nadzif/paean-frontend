@@ -13,6 +13,7 @@ import Usa from "../../assets/media/images/flag/usa.png";
 import Korea from "../../assets/media/images/flag/korea.png";
 import {LanguageProvider} from "./utils/LanguageProvider";
 import {useTranslation} from "react-i18next";
+import ScrollToTop from "./utils/ScrollToTop";
 
 const NavbarComp = () => {
     const {t} = useTranslation();
@@ -53,6 +54,7 @@ const NavbarComp = () => {
 
     return (
         <>
+            <ScrollToTop/>
             <Navbar
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}
