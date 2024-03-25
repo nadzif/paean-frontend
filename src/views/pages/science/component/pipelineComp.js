@@ -61,7 +61,7 @@ const ProgressBarTable = () => {
                     {
                         indexPipeline !== 0 &&
                         <tr>
-                            <td colSpan={8} style={{backgroundColor: "#ddd"}}>
+                            <td colSpan={3 + phase.length}>
                                 &nbsp;
                             </td>
                         </tr>
