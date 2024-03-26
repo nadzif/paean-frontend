@@ -1,5 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import BgHeader from "../../../assets/media/images/page-header/news-banner.jpg";
+import SpeakerIcon from "../../../assets/media/images/dummy/speaker.png";
 import {useEffect, useState} from "react";
 import {blogLoaded, newsLoaded} from "../../../application/actions/ui";
 import {getBlog, getNews} from "../../../application/selectors/ui";
@@ -250,63 +251,41 @@ const NewsPage = () => {
                         {blog.data !== undefined ? blog.data.length !== 0 ? blog.data.map(data => {
                             return (<div
                                 key={data.id}
-                                className="col-lg-6 col-md-6 mb-5"
+                                className="col-lg-12 col-md-12 mb-5"
                             >
                                 <div className="blog-item">
-                                    <img
-                                        className="media-object img-fluid rounded"
-                                        src={`${data.media}`}
-                                        style={{
-                                            width: "200%",
-                                            height: "300px",
-                                            overflow: "hidden",
-                                            position: "relative",
-                                            objectFit: "cover",
-                                        }}
-                                        alt="img"
-                                    />
-                                    <div className="blog-item-content bg-white p-5">
-                                        <div className="blog-item-meta bg-gray py-1 px-2">
-                                            <span className="text-muted text-capitalize mr-3"></span>
-                                            <span className="text-black text-capitalize mr-3">
-                                                          <i className="ti-time mr-1"></i>
-                                                {moment(data.publishedAt).format('LLL')}
-                                                    </span>
+                                    <div className="d-flex">
+                                        <div className="flex-shrink-0">
+                                            <img src={SpeakerIcon} alt="" id="" width="40" height="40"/>
                                         </div>
-                                        <div
-                                            style={{
-                                                minHeight: window.innerWidth >= 920 ? '110px' : '155px',
-                                                maxHeight: window.innerWidth >= 920 ? '110px' : '155px',
-                                            }}
-                                        >
-                                            <h3 className="mt-3 mb-3">
-                                                <Link
-                                                    to={`/newscontent/` + data.id}
-                                                    state={data}
-                                                >
-                                                    {lng === 'en' ? (data.title.en || data.title.kr) : (data.title.kr || data.title.en)}
-                                                </Link>
-                                            </h3>
+                                        <div className="flex-grow-1 ms-3">
+                                            <div className="d-flex flex-column bd-highlight mb-3">
+                                                <div className="p-2 bd-highlight">
+                                                <span
+                                                    style={{opacity: 0.8}}>{moment(data.publishedAt).format('LL')}</span>
+                                                </div>
+                                                <div className="p-2 bd-highlight">
+                                                    <h3>
+                                                        <Link
+                                                            to={`/newscontent/` + data.id}
+                                                            state={data}
+                                                        >
+                                                            {lng === 'en' ? (data.title.en || data.title.kr) : (data.title.kr || data.title.en)}
+                                                        </Link>
+                                                    </h3>
+                                                </div>
+                                                <div className="p-2 bd-highlight">
+                                                    <Link
+                                                        className="text-info text-decoration-underline"
+                                                        to={`/content/blog/` + pageBlog + '/' + data.id}
+                                                        state={data}
+                                                    >
+                                                        Read More
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                            <hr/>
                                         </div>
-                                        <br/>
-                                        <div
-                                            style={{
-                                                minHeight: window.innerWidth >= 920 ? '100px' : 'auto',
-                                                maxHeight: window.innerWidth >= 920 ? '100px' : 'auto',
-                                            }}
-                                        >
-                                            <p className="excerpt">
-                                                {data.content !== "" ? parse((lng === 'en' ? (removeHtmlTags(data.content.en) || removeHtmlTags(data.content.kr)) : (removeHtmlTags(data.content.kr) || removeHtmlTags(data.content.en))).slice(0, 120) + '....' + '<br>') : ""}
-                                            </p>
-                                        </div>
-                                        <br/>
-                                        <Link
-                                            className="btn btn-small btn-main btn-round-full"
-                                            to={`/content/blog/` + pageBlog + '/' + data.id}
-                                            state={data}
-                                        >
-                                            Read More
-                                        </Link>
                                     </div>
                                 </div>
                             </div>)

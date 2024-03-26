@@ -52,153 +52,120 @@ const NavbarComp = () => {
         });
     }, []);
 
-    return (
-        <>
-            <ScrollToTop/>
-            <Navbar
-                onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}
-                collapseOnSelect
-                expand="sm"
-                bg={onTopPage ? "transparent" : "white"}
-                sticky="top"
-                variant={onTopPage ? "dark" : "light"}
-                style={{boxShadow: onTopPage ? "" : "0 2px 4px 0 rgba(0,0,0,.2)"}}
-            >
-                <Container fluid>
-                    <Navbar.Brand href="/">
-                        <Image className="imgLogoNav" src={onTopPage ? LogoWhite : Logo}/>
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="justify-content-end flex-grow-1 pe-3">
-                            <Nav.Link>
-                                <Link
-                                    to="/"
-                                    className="buttonSizeNav"
-                                    style={{
-                                        color: onTopPage ? (activeItem === 'home' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'home' ? 'rgba(0, 176, 80, 0.8)' : 'black'),
-                                    }}
-                                    onClick={() => {
-                                        setActiveItem('home');
-                                    }}
-                                >
-                                    {t('home')}
-                                </Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <Link
-                                    to="/science"
-                                    className="buttonSizeNav"
-                                    style={{
-                                        color: onTopPage ? (activeItem === 'science' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'science' ? 'rgba(0, 176, 80, 0.8)' : 'black')
-                                    }}
-                                    onClick={() => {
-                                        setActiveItem('science');
-                                    }}
-                                >
-                                    {t('science')}
-                                </Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <Link
-                                    to="/aboutus"
-                                    className="buttonSizeNav"
-                                    style={{
-                                        color: onTopPage ? (activeItem === 'aboutUs' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'aboutUs' ? 'rgba(0, 176, 80, 0.8)' : 'black')
-                                    }}
-                                    onClick={() => {
-                                        setActiveItem('aboutUs');
-                                    }}
-                                >
-                                    {t('about us')}
-                                </Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <Link
-                                    to="/news"
-                                    className="buttonSizeNav"
-                                    style={{
-                                        color: onTopPage ? (activeItem === 'news' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'news' ? 'rgba(0, 176, 80, 0.8)' : 'black')
-                                    }}
-                                    onClick={() => {
-                                        setActiveItem('news');
-                                    }}
-                                >
-                                    {t('news')}
-                                </Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <Link
-                                    to="/career"
-                                    className="buttonSizeNav"
-                                    style={{
-                                        color: onTopPage ? (activeItem === 'career' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'career' ? 'rgba(0, 176, 80, 0.8)' : 'black')
-                                    }}
-                                    onClick={() => {
-                                        setActiveItem('career');
-                                    }}
-                                >
-                                    {t('career')}
-                                </Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <Link
-                                    to="/contactus"
-                                    className="buttonSizeNav"
-                                    style={{
-                                        color: onTopPage ? (activeItem === 'contactUs' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'contactUs' ? 'rgba(0, 176, 80, 0.8)' : 'black')
-                                    }}
-                                    onClick={() => {
-                                        setActiveItem('contactUs');
-                                    }}
-                                >
-                                    {t('contact us')}
-
-                                </Link>
-                            </Nav.Link>
-                            {/*<Nav.Link>*/}
-                            {/*    <Link*/}
-                            {/*        to="#"*/}
-                            {/*        className="buttonSizeNav"*/}
-                            {/*        style={{*/}
-                            {/*            color: onTopPage ? (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'black'),*/}
-                            {/*        }}*/}
-                            {/*        onClick={() => handleLanguage('kr')}*/}
-                            {/*    >*/}
-                            {/*        kr*/}
-                            {/*    </Link>*/}
-                            {/*    <Link*/}
-                            {/*        to="#"*/}
-                            {/*        className="buttonSizeNav"*/}
-                            {/*        style={{*/}
-                            {/*            color: onTopPage ? 'white' : 'black', margin: '0 5px'*/}
-                            {/*        }}*/}
-                            {/*        onClick={() => handleLanguage('kr')}*/}
-                            {/*    >*/}
-                            {/*        |*/}
-                            {/*    </Link>*/}
-                            {/*    <Link*/}
-                            {/*        to="#"*/}
-                            {/*        className="buttonSizeNav me-2"*/}
-                            {/*        style={{*/}
-                            {/*            color: onTopPage ? (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'black'),*/}
-                            {/*        }}*/}
-                            {/*        onClick={() => handleLanguage('en')}*/}
-                            {/*    >*/}
-                            {/*        en*/}
-                            {/*    </Link>*/}
-                            {/*</Nav.Link>*/}
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-            <LanguageProvider>
-                <Outlet/>
-                <FooterComp/>
-            </LanguageProvider>
-        </>
-    );
+    return (<>
+        {/*<ScrollToTop/>*/}
+        <Navbar
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            collapseOnSelect
+            expand="sm"
+            bg={onTopPage ? "transparent" : "white"}
+            sticky="top"
+            variant={onTopPage ? "dark" : "light"}
+            style={{boxShadow: onTopPage ? "" : "0 2px 4px 0 rgba(0,0,0,.2)"}}
+        >
+            <Container fluid>
+                <Navbar.Brand href="/">
+                    <Image className="imgLogoNav" src={onTopPage ? LogoWhite : Logo}/>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="justify-content-end flex-grow-1 pe-3">
+                        <Nav.Link
+                            href="/"
+                            className="buttonSizeNav"
+                            style={{
+                                color: onTopPage ? (activeItem === '' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === '' ? 'rgba(0, 176, 80, 0.8)' : 'black'),
+                            }}
+                        >
+                            {t('home')}
+                        </Nav.Link>
+                        <Nav.Link
+                            href="/science"
+                            className="buttonSizeNav"
+                            style={{
+                                color: onTopPage ? (activeItem === 'science' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'science' ? 'rgba(0, 176, 80, 0.8)' : 'black')
+                            }}
+                        >
+                            {t('science')}
+                        </Nav.Link>
+                        <Nav.Link
+                            href="/aboutus"
+                            className="buttonSizeNav"
+                            style={{
+                                color: onTopPage ? (activeItem === 'aboutus' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'aboutus' ? 'rgba(0, 176, 80, 0.8)' : 'black')
+                            }}
+                        >
+                            {t('about us')}
+                        </Nav.Link>
+                        <Nav.Link
+                            href="/news"
+                            className="buttonSizeNav"
+                            style={{
+                                color: onTopPage ? (activeItem === 'news' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'news' ? 'rgba(0, 176, 80, 0.8)' : 'black')
+                            }}
+                        >
+                            {t('news')}
+                        </Nav.Link>
+                        <Nav.Link
+                            href="/career"
+                            className="buttonSizeNav"
+                            style={{
+                                color: onTopPage ? (activeItem === 'career' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'career' ? 'rgba(0, 176, 80, 0.8)' : 'black')
+                            }}
+                        >
+                            {t('career')}
+                        </Nav.Link>
+                        <Nav.Link
+                            href="/contactus"
+                            className="buttonSizeNav"
+                            style={{
+                                color: onTopPage ? (activeItem === 'contactus' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (activeItem === 'contactus' ? 'rgba(0, 176, 80, 0.8)' : 'black')
+                            }}
+                        >
+                            {t('contact us')}
+                        </Nav.Link>
+                        {/*<Nav.Link>*/}
+                        {/*    <Link*/}
+                        {/*        to="#"*/}
+                        {/*        className="buttonSizeNav"*/}
+                        {/*        style={{*/}
+                        {/*            color: onTopPage ? (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'kr' ? 'rgba(0, 176, 80, 0.8)' : 'black'),*/}
+                        {/*        }}*/}
+                        {/*        onClick={() => handleLanguage('kr')}*/}
+                        {/*    >*/}
+                        {/*        kr*/}
+                        {/*    </Link>*/}
+                        {/*    <Link*/}
+                        {/*        to="#"*/}
+                        {/*        className="buttonSizeNav"*/}
+                        {/*        style={{*/}
+                        {/*            color: onTopPage ? 'white' : 'black', margin: '0 5px'*/}
+                        {/*        }}*/}
+                        {/*        onClick={() => handleLanguage('kr')}*/}
+                        {/*    >*/}
+                        {/*        |*/}
+                        {/*    </Link>*/}
+                        {/*    <Link*/}
+                        {/*        to="#"*/}
+                        {/*        className="buttonSizeNav me-2"*/}
+                        {/*        style={{*/}
+                        {/*            color: onTopPage ? (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'white') : (language === 'en' ? 'rgba(0, 176, 80, 0.8)' : 'black'),*/}
+                        {/*        }}*/}
+                        {/*        onClick={() => handleLanguage('en')}*/}
+                        {/*    >*/}
+                        {/*        en*/}
+                        {/*    </Link>*/}
+                        {/*</Nav.Link>*/}
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+        <LanguageProvider>
+            <Outlet/>
+            <FooterComp/>
+        </LanguageProvider>
+    </>);
 };
 
 export default NavbarComp;
