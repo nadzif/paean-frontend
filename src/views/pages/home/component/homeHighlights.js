@@ -39,7 +39,7 @@ const HomeHighlightComp = (props) => {
                                             Read More &gt;&gt;
                                         </Link>
 
-                                        <div className="release-date">{moment(data.publishedAt).format('LL')}</div>
+                                        <div className="release-date">{moment(data.publishedAt).format('LLL')}</div>
                                     </div>
                                 </div>
                             </div>

@@ -122,7 +122,7 @@ const NewsPage = () => {
                                             <span className="text-muted text-capitalize mr-3"></span>
                                             <span className="text-black text-capitalize mr-3">
                                                           <i className="ti-time mr-1"></i>
-                                                {moment(data.publishedAt).format('LL')}
+                                                {moment(data.publishedAt).format('LLL')}
                                                     </span>
                                         </div>
                                         <div
